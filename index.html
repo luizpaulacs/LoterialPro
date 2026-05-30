@@ -23,10 +23,7 @@
             --radius-card: 1.5rem;
             --shadow-sm: 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
             --shadow-md: 0 12px 20px -8px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
             --transition: all 0.25s ease;
-            --glass-bg: rgba(255, 255, 255, 0.92);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         * {
@@ -37,7 +34,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f4f6fb 0%, #eef2ff 100%);
+            background: #f4f6fb;
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
             color: var(--dark);
             padding: 16px;
@@ -45,82 +42,73 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
         }
 
-        /* Header aprimorado com glassmorphism */
         header {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(8px);
             color: white;
-            padding: 16px 28px;
-            border-radius: 48px;
+            padding: 16px 24px;
+            border-radius: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 28px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: var(--transition);
-        }
-
-        header:hover {
-            background: rgba(15, 23, 42, 0.92);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         header h1 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 8px;
             letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #fff, #c4b5fd);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
         }
 
         .subtitle {
             font-size: 0.7rem;
             color: #a5b4fc;
             margin-top: 4px;
-            font-weight: 500;
         }
 
         .header-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
         }
 
-        .btn-help, .btn-logout {
+        .btn-help {
+            background: #475569;
             border: none;
-            padding: 8px 20px;
+            padding: 8px 16px;
             border-radius: 60px;
+            color: white;
             font-weight: 600;
             font-size: 0.8rem;
             cursor: pointer;
             transition: var(--transition);
-            backdrop-filter: blur(4px);
-        }
-
-        .btn-help {
-            background: rgba(71, 85, 105, 0.8);
-            color: white;
         }
 
         .btn-help:hover {
             background: var(--primary);
-            transform: translateY(-2px);
         }
 
         .btn-logout {
-            background: rgba(51, 65, 85, 0.8);
+            background: #334155;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 60px;
             color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 6px;
@@ -131,119 +119,98 @@
             transform: scale(0.97);
         }
 
-        /* Tabs modernizadas */
         .tabs-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 32px;
-            padding: 6px 0;
+            gap: 8px;
             background: transparent;
+            margin-bottom: 28px;
+            padding: 4px 0;
         }
 
         .tab-btn {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 10px 20px;
-            border-radius: 80px;
+            background: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 60px;
             font-weight: 600;
             font-size: 0.8rem;
             color: var(--gray);
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: var(--transition);
             box-shadow: var(--shadow-sm);
-            flex: 0 1 auto;
-            min-width: 90px;
+            flex: 1 0 auto;
+            min-width: 100px;
+            backdrop-filter: blur(2px);
         }
 
         .tab-btn.active {
             background: var(--primary);
             color: white;
-            border-color: transparent;
-            box-shadow: 0 8px 20px -6px rgba(139, 92, 246, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 18px -6px rgba(139, 92, 246, 0.4);
         }
 
         .tab-btn:hover:not(.active) {
-            background: white;
+            background: var(--gray-light);
             color: var(--dark);
-            transform: translateY(-3px);
-            border-color: var(--primary-soft);
+            transform: translateY(-2px);
         }
 
         .tab-content {
             display: none;
-            animation: fadeInUp 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            animation: fadeIn 0.3s ease;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(12px);}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px);}
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Cards com vidro aprimorado */
         .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            padding: 1.6rem;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(2px);
+            padding: 1.5rem;
             border-radius: var(--radius-card);
             box-shadow: var(--shadow-md);
             margin-bottom: 24px;
-            border: var(--glass-border);
+            border: 1px solid rgba(255,255,255,0.5);
             transition: var(--transition);
-        }
-
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.96);
         }
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
         h2 {
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             color: var(--dark);
-            border-left: 6px solid var(--primary);
-            padding-left: 16px;
-            background: linear-gradient(135deg, var(--dark) 0%, #2d3a5e 100%);
+            border-left: 5px solid var(--primary);
+            padding-left: 14px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
 
-        /* Quadro de números responsivo e elegante */
         .quadro-numeros {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 12px;
             margin: 20px 0;
         }
 
         @media (max-width: 580px) {
             .quadro-numeros {
                 grid-template-columns: repeat(5, 1fr);
-                gap: 10px;
-            }
-            .bola-sel, .bola-est {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .quadro-numeros {
-                grid-template-columns: repeat(5, 1fr);
+                gap: 8px;
             }
         }
 
@@ -253,55 +220,60 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: white;
+            background: var(--light);
             border-radius: 999px;
             font-weight: 800;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
             border: 1.5px solid transparent;
         }
 
         .bola-sel:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             background: #f1f5fe;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
         .bola-sel span.legenda-bol {
             font-size: 0.65rem;
-            font-weight: 600;
+            font-weight: 500;
             margin-top: 4px;
-            opacity: 0.85;
+            opacity: 0.8;
         }
 
-        .bola-sel.tipo-fixa { background: linear-gradient(145deg, #ede9fe, #e0d5ff); border-color: var(--primary); color: var(--primary-dark); }
-        .bola-sel.tipo-semi { background: linear-gradient(145deg, #d1fae5, #bef0df); border-color: var(--success); color: #065f46; }
+        .bola-sel.tipo-fixa { background: var(--primary-soft); border-color: var(--primary); color: var(--primary-dark); }
+        .bola-sel.tipo-semi { background: var(--success-light); border-color: var(--success); color: #065f46; }
         .bola-sel.tipo-livre { background: #f8fafc; border-color: #cbd5e1; color: #334155; }
-        .bola-sel.tipo-excluida { background: linear-gradient(145deg, #ffe4e6, #ffd6da); border-color: var(--hot); color: #b91c1c; text-decoration: line-through; }
-        .bola-sel.tipo-ciclo { background: linear-gradient(145deg, #fed7aa, #fee2b5); border-color: #f97316; color: #9a3412; font-weight: 900; }
+        .bola-sel.tipo-excluida { background: #ffe4e6; border-color: var(--hot); color: #b91c1c; text-decoration: line-through; }
+        .bola-sel.tipo-ciclo { background: var(--warning-light); border-color: #f97316; color: #9a3412; font-weight: 900; }
+        
+        .bola-sel.g1 { background: #dbeafe; border-color: #3b82f6; color: #1e3a8a; }
+        .bola-sel.g2 { background: #d1fae5; border-color: #10b981; color: #065f46; }
+        .bola-sel.g3 { background: #fef3c7; border-color: #f59e0b; color: #78350f; }
+        .bola-sel.g4 { background: #fce7f3; border-color: #ec4899; color: #701a75; }
+        .bola-sel.g5 { background: #e0f2fe; border-color: #0ea5e9; color: #0c4a6e; }
 
-        .bola-est.quente { background: linear-gradient(145deg, #fee2e2, #ffd6da); border-color: var(--hot); color: #b91c1c; }
-        .bola-est.fria { background: linear-gradient(145deg, #dbeafe, #cfe3ff); border-color: var(--cold); color: #1e3a8a; }
+        .bola-est.quente { background: #fee2e2; border-color: var(--hot); color: #b91c1c; }
+        .bola-est.fria { background: #dbeafe; border-color: var(--cold); color: #1e3a8a; }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         label {
             font-weight: 600;
             font-size: 0.8rem;
             color: var(--dark);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: block;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 12px 16px;
-            border-radius: 28px;
-            border: 1.5px solid var(--gray-light);
+            padding: 12px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--gray-light);
             background: white;
             font-size: 0.9rem;
             transition: var(--transition);
@@ -310,55 +282,49 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
         }
 
         .btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 18px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 0.9rem;
             width: 100%;
             cursor: pointer;
             transition: var(--transition);
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         .jogo-gerado {
-            background: white;
-            padding: 16px;
-            border-radius: 28px;
-            margin-bottom: 14px;
+            background: var(--light);
+            padding: 14px;
+            border-radius: 24px;
+            margin-bottom: 12px;
             border: 1px solid var(--gray-light);
             transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .jogo-gerado:hover {
-            transform: translateX(4px);
-            border-color: var(--primary-soft);
         }
 
         .dezenas-flex {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 10px;
+            gap: 6px;
+            margin-bottom: 8px;
         }
 
         .dezena-mini {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(145deg, var(--dark), var(--dark-soft));
+            width: 36px;
+            height: 36px;
+            background: var(--dark);
             color: white;
             border-radius: 40px;
             display: flex;
@@ -366,64 +332,49 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.8rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .dezena-mini:hover {
-            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .seletor-status {
             display: flex;
             justify-content: space-between;
-            gap: 12px;
+            gap: 10px;
             background: var(--primary-soft);
-            padding: 14px 18px;
-            border-radius: 50px;
+            padding: 12px;
+            border-radius: 40px;
             margin: 15px 0;
-            font-weight: 700;
+            font-weight: 600;
             flex-wrap: wrap;
-            backdrop-filter: blur(4px);
         }
 
         .painel-premios {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-            gap: 15px;
-            margin-bottom: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .premio-box {
             background: white;
-            border-radius: 32px;
-            padding: 12px;
+            border-radius: 28px;
+            padding: 10px;
             text-align: center;
             border: 1px solid #e2e8f0;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .premio-box:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
         }
 
         .financeiro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
         }
 
         .fin-card {
-            border-radius: 32px;
-            padding: 22px;
+            border-radius: 28px;
+            padding: 18px;
             text-align: center;
             color: white;
             font-weight: bold;
             transition: var(--transition);
-            backdrop-filter: blur(4px);
-            box-shadow: var(--shadow-md);
         }
 
         .fin-custo { background: linear-gradient(135deg, #1e293b, #0f172a); }
@@ -432,22 +383,18 @@
         .fin-balanco.prejuizo { background: linear-gradient(135deg, #e11d48, #be123c); }
 
         .sugestao-ia {
-            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
-            border-left: 5px solid var(--primary);
-            border-radius: 28px;
-            padding: 16px;
+            background: #eef2ff;
+            border-left: 4px solid var(--primary);
+            border-radius: 20px;
+            padding: 14px;
             font-size: 0.85rem;
-            margin-bottom: 20px;
-            font-weight: 500;
+            margin-bottom: 18px;
         }
 
         .tabela-admin-wrapper {
             width: 100%;
             overflow-x: auto;
-            margin-top: 20px;
-            border-radius: 28px;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(4px);
+            margin-top: 15px;
         }
 
         .tabela-admin {
@@ -457,56 +404,55 @@
         }
 
         .tabela-admin th, .tabela-admin td {
-            padding: 14px 16px;
+            padding: 10px 12px;
             text-align: left;
             border-bottom: 1px solid var(--gray-light);
         }
 
         .tabela-admin th {
             background: #f8fafc;
-            font-weight: 800;
+            font-weight: 700;
         }
 
         .btn-mini-admin {
             border: none;
-            padding: 6px 14px;
-            border-radius: 30px;
+            padding: 5px 10px;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: bold;
             cursor: pointer;
-            margin-right: 6px;
+            margin-right: 4px;
             transition: var(--transition);
         }
 
         .btn-mini-admin.btn-ativar { background: var(--success-light); color: #065f46; }
         .btn-mini-admin.btn-bloquear { background: #ffe4e6; color: #b91c1c; }
-        .btn-mini-admin:hover { transform: scale(0.96); filter: brightness(0.96); }
+        .btn-mini-admin:hover { transform: scale(0.95); }
 
         .badge-status {
-            padding: 5px 10px;
-            border-radius: 20px;
+            padding: 4px 8px;
+            border-radius: 12px;
             font-weight: bold;
             font-size: 0.7rem;
         }
         .badge-status.status-ativo { background: var(--success-light); color: #065f46; }
         .badge-status.status-pendente { background: var(--warning-light); color: #9a3412; }
 
-        /* Login aprimorado */
         .login-toggle {
             display: flex;
             background: var(--gray-light);
-            padding: 6px;
-            border-radius: 50px;
-            margin-bottom: 24px;
+            padding: 4px;
+            border-radius: 30px;
+            margin-bottom: 20px;
         }
 
         .toggle-btn {
             flex: 1;
             background: transparent;
             border: none;
-            padding: 12px;
-            border-radius: 45px;
-            font-weight: 700;
+            padding: 10px;
+            border-radius: 25px;
+            font-weight: 600;
             font-size: 0.85rem;
             cursor: pointer;
             color: var(--gray);
@@ -516,7 +462,7 @@
         .toggle-btn.active {
             background: white;
             color: var(--dark);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
         }
 
         #tela-bloqueio-login {
@@ -525,8 +471,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.96);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(12px);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -536,22 +482,22 @@
 
         .login-box {
             background: white;
-            padding: 2rem 2rem 2.2rem;
-            border-radius: 56px;
+            padding: 2rem;
+            border-radius: 48px;
             width: 100%;
-            max-width: 440px;
-            box-shadow: 0 30px 50px -20px black;
-            animation: slideUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            max-width: 420px;
+            box-shadow: 0 25px 45px -12px black;
+            animation: slideUp 0.4s ease;
         }
 
         .box-aviso-pagamento {
             background: #fffbeb;
-            border-left: 4px solid var(--warning);
-            padding: 16px;
-            border-radius: 28px;
+            border: 1px solid var(--warning-light);
+            padding: 14px;
+            border-radius: 20px;
             font-size: 0.8rem;
             color: #9a3412;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             line-height: 1.4;
         }
 
@@ -561,8 +507,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(8px);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
             z-index: 10001;
             display: none;
             align-items: center;
@@ -573,75 +519,44 @@
         .ajuda-box {
             background: white;
             padding: 2rem;
-            border-radius: 48px;
+            border-radius: 32px;
             width: 100%;
-            max-width: 680px;
+            max-width: 600px;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             animation: slideUp 0.3s ease;
         }
 
         .ajuda-item {
-            margin-bottom: 20px;
-            padding-bottom: 14px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
             border-bottom: 1px solid var(--gray-light);
         }
 
         .ajuda-item h4 {
             color: var(--primary-dark);
             font-size: 0.95rem;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .ajuda-item p {
             font-size: 0.85rem;
             color: #475569;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px);}
+            from { opacity: 0; transform: translateY(30px);}
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Responsividade refinada */
         @media (max-width: 640px) {
             body { padding: 12px; }
             .card { padding: 1.2rem; }
-            .tab-btn { padding: 8px 14px; font-size: 0.7rem; min-width: 75px; }
-            .dezena-mini { width: 34px; height: 34px; font-size: 0.75rem; }
+            .tab-btn { padding: 8px 12px; font-size: 0.7rem; min-width: 70px; }
+            .dezena-mini { width: 32px; height: 32px; font-size: 0.7rem; }
             .bola-sel { font-size: 0.9rem; }
-            header h1 { font-size: 1.3rem; }
-            .grid-2 { gap: 18px; }
-        }
-
-        @media (max-width: 480px) {
-            .quadro-numeros {
-                gap: 8px;
-            }
-            .bola-sel, .bola-est {
-                font-size: 0.8rem;
-            }
-            .tab-btn {
-                font-size: 0.65rem;
-                padding: 6px 12px;
-                min-width: 65px;
-            }
-        }
-
-        /* Scroll personalizado */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #eef2ff;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
         }
     </style>
 </head>
@@ -649,19 +564,22 @@
 
 <div id="modal-ajuda-plataforma">
     <div class="ajuda-box">
-        <h2 style="margin-bottom: 12px;">📖 Guia de Uso da Plataforma</h2>
+        <h2 style="margin-bottom: 10px;">📖 Guia de Uso da Plataforma</h2>
         <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 20px;">Aprenda como tirar o máximo de proveito de cada ferramenta integrada do Loterial Pro.</p>
         
-        <div class="ajuda-item"><h4>🎲 Aba Gerador</h4><p>Escolha uma estratégia combinatória no menu superior (Ex: Matriz, Moldura, R4, R5, R6 ou Ciclo). Selecione a <b>Quantidade de números por bilhete (15 a 18)</b>. Bilhetes maiores aumentam drasticamente suas chances de acerto e multiplicam os prêmios, alterando os custos na aba Financeiro.</p></div>
-        <div class="ajuda-item"><h4>📝 Apostas Múltiplas (16 a 18 Números)</h4><p>O sistema calcula os desdobramentos de prêmios de forma automatizada conforme as regras da Caixa. Por exemplo: se você jogar com um bilhete de 16 dezenas e cravar 13 acertos reais, receberá financeiramente o valor equivalente a 3 prêmios de 13 acertos + 13 prêmios de 12 acertos.</p></div>
-        <div class="ajuda-item"><h4>✅ Aba Conferir e Financeiro</h4><p>Cole as apostas geradas na caixa de texto (uma por linha) e digite o resultado oficial de 15 dezenas. O conferidor detectará o tamanho do bilhete automaticamente e aplicará os multiplicadores de prêmios e custos dinamicamente.</p></div>
-        <button class="btn" style="margin-top: 10px;" onclick="window.fecharModalAjuda()">Fechar Guia</button>
+        <div class="ajuda-item">
+            <h4>🎲 Novas Estratégias Expandidas (Garantias de 11 a 13 Pontos)</h4>
+            <p>• <b>5 Grupos de 5 (Sem Fixas):</b> Divide as 25 dezenas em 5 blocos coloridos de 5 dezenas. Garante ótimos retornos baseados na regularidade.</p>
+            <p>• <b>Matrizes de Redução (8 ou 9 Fixas):</b> Excelentes opções econômicas para cravar 12 e 13 acertos reais no fechamento.</p>
+        </div>
+
+        <button class="btn" style="margin-top: 10px; margin-bottom: 0;" onclick="window.fecharModalAjuda()">Fechar Guia</button>
     </div>
 </div>
 
 <div id="tela-bloqueio-login">
     <div class="login-box">
-        <h2 id="login-titulo" style="font-size: 1.9rem;">🍀 Loterial Pro</h2>
+        <h2 id="login-titulo" style="font-size: 1.8rem;">🍀 Loterial Pro</h2>
         <p id="login-sub" style="color: #475569; margin-bottom: 1rem;">Entre com sua conta comercial</p>
         
         <div class="login-toggle">
@@ -670,7 +588,7 @@
         </div>
 
         <div id="aviso-pagamento-cadastro" class="box-aviso-pagamento" style="display: none;">
-            📢 <b>Aviso de Ativação:</b> Após efetuar o cadastro, o seu acesso entrará em status <b>Pendente</b>. Para liberação imediata da sua licença de uso, envie o comprovante de transferência/Pix diretamente ao administrador do aplicativo.
+            📢 <b>Aviso de Ativação:</b> Ao criar a conta, você ganha <b>7 dias de Trial gratuito</b>. Após esse prazo, o acesso será travado até que a licença comercial seja ativada manualmente pelo administrador.
         </div>
 
         <div class="form-group"><label>E-mail</label><input type="email" id="log-email" placeholder="exemplo@loterial.com"></div>
@@ -696,14 +614,75 @@
         <button class="tab-btn" onclick="mudarAba('aba-conferidor')">✅ Conferir</button>
         <button class="tab-btn" onclick="mudarAba('aba-financeiro')">💰 Financeiro</button>
         <button class="tab-btn" onclick="mudarAba('aba-config')">⚙️ Valores</button>
-        <button class="tab-btn" id="menu-admin" onclick="mudarAba('aba-admin-licencas')" style="display: none; background: #fffbeb; border: 1px solid #fef3c7;">🔑 Licenças Admin</button>
+        <button class="tab-btn" id="menu-admin" onclick="mudarAba('aba-admin-licencas')" style="display: none; background: #fffbeb; border: 1px solid #fef3c7; color: #b45309;">🔑 Licenças Admin</button>
     </nav>
 
-    <!-- Demais abas (mesma estrutura original mantida) -->
-    <div id="aba-admin-licencas" class="tab-content"><div class="card"><h2>🔑 Controle Central de Licenças</h2><p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 15px;">Libere ou bloqueie contas de clientes em tempo real diretamente pelo servidor.</p><div class="tabela-admin-wrapper"><table class="tabela-admin"><thead><tr><th>E-mail do Usuário</th><th>Status da Licença</th><th>Ações Administrativas</th></tr></thead><tbody id="tabela-clientes-firebase"><tr><td colspan="3" style="color:gray; text-align:center;">Carregando dados estruturados...</td></tr></tbody></table></div></div></div>
-    <div id="aba-gerador" class="tab-content active"><div class="grid-2"><div class="card"><h2>1. Estratégia & Tabuleiro</h2><div class="form-group"><label>Estratégia Combinatória</label><select id="seletor-estrategia" onchange="adaptarVolanteEstrategia()"><option value="matriz">Matriz Personalizada (5 Fixas + 12 Semi)</option><option value="moldura">Filtro Geométrico Moldura/Miolo</option><option value="linhas">Quadrantes: 3 por Linha</option><option value="erre4">Fechamento R4 (eliminar 4)</option><option value="exclusao">Desdobramento R5 (eliminar 5)</option><option value="erre6">Fechamento R6 (eliminar 6)</option><option value="grupos">Estratégia ABC Grupos</option><option value="ciclo">Ciclo Atrasadas</option></select></div><div class="form-group"><label>Dezenas por Bilhete (Apostas Múltiplas)</label><select id="cfg-tamanho-bilhete" style="background:#f0fdf4;"><option value="15" selected>15 Números (Aposta Simples)</option><option value="16">16 Números (Preço Múltiplo)</option><option value="17">17 Números (Preço Múltiplo)</option><option value="18">18 Números (Preço Múltiplo)</option></select></div><div id="box-sugestao-ia" class="sugestao-ia" style="display:none;"></div><button class="btn" style="background:#3b82f6;" onclick="window.gerarSugestaoIA()">💡 Analisar Nuvem & Sugerir</button><div id="container-contadores-matriz" class="seletor-status" style="display:none;"></div><div class="quadro-numeros" id="volante-interativo"></div><div id="container-filtro-moldura" style="display:none;"><label>Proporção Moldura/Miolo</label><select id="cfg-proporcao-moldura"><option value="9x6">9 Moldura / 6 Miolo</option><option value="10x5">10 Moldura / 5 Miolo</option></select></div><div class="form-group"><label>Ímpares/Pares</label><select id="filtro-pares"><option value="qualquer">Qualquer</option><option value="8x7" selected>8 Ímpares / 7 Pares (ouro)</option><option value="9x6">9 Ímpares / 6 Pares</option></select></div><div class="form-group"><label>Quantidade de Jogos</label><input type="number" id="qtd-jogos" value="10" min="1" max="50"></div><button class="btn" onclick="window.executarMotorGerador()">⚙️ Gerar Apostas</button></div><div class="card"><h2>📋 Jogos Gerados</h2><div id="jogos-sugeridos-container"><p style="color:gray;">Configure e gere os jogos</p></div><div id="area-botao-integracao"></div></div></div></div>
+    <div id="aba-admin-licencas" class="tab-content">
+        <div class="card">
+            <h2>🔑 Controle Central de Licenças</h2>
+            <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 15px;">Libere ou bloqueie contas de clientes em tempo real diretamente pelo servidor.</p>
+            <div class="tabela-admin-wrapper">
+                <table class="tabela-admin">
+                    <thead>
+                        <tr>
+                            <th>E-mail do Usuário</th>
+                            <th>Status da Licença</th>
+                            <th>Ações Administrativas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-clientes-firebase">
+                        <tr><td colspan="3" style="color:gray; text-align:center;">Carregando dados estruturados...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="aba-gerador" class="tab-content active">
+        <div class="grid-2">
+            <div class="card"><h2>1. Estratégia & Tabuleiro</h2>
+                <div class="form-group">
+                    <label>Estratégia Combinatória</label>
+                    <select id="seletor-estrategia" onchange="adaptarVolanteEstrategia()" style="margin-bottom:12px;">
+                        <option value="matriz">Matriz Personalizada (5 Fixas + 12 Semi)</option>
+                        <option value="moldura">Filtro Geométrico Moldura/Miolo</option>
+                        <option value="linhas">Quadrantes: 3 por Linha</option>
+                        <option value="erre4">Fechamento R4 (eliminar 4)</option>
+                        <option value="exclusao">Desdobramento R5 (eliminar 5)</option>
+                        <option value="erre6">Fechamento R6 (eliminar 6)</option>
+                        <option value="cinco_grupos">Matriz 5 Fixas + 5 Grupos de 4</option>
+                        <option value="cinco_de_cinco">Fechamento 5 Grupos de 5 (Sem Fixas)</option>
+                        <option value="oito_fixas">Redução 8 Fixas + 10 Variáveis</option>
+                        <option value="nove_fixas">Redução 9 Fixas + 8 Variáveis</option>
+                        <option value="grupos">Estratégia ABC Grupos</option>
+                        <option value="ciclo">Ciclo Atrasadas</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Dezenas por Bilhete (Apostas Múltiplas)</label>
+                    <select id="cfg-tamanho-bilhete" style="margin-bottom:12px; background:#f0fdf4; border-color:#bbf7d0; font-weight:bold;">
+                        <option value="15" selected>15 Números (Aposta Simples)</option>
+                        <option value="16">16 Números (Preço Múltiplo)</option>
+                        <option value="17">17 Números (Preço Múltiplo)</option>
+                        <option value="18">18 Números (Preço Múltiplo)</option>
+                    </select>
+                </div>
+
+                <div id="box-sugestao-ia" class="sugestao-ia" style="display:none;"></div>
+                <button class="btn" style="background:#3b82f6; margin-bottom:12px;" onclick="window.gerarSugestaoIA()">💡 Analisar Nuvem & Sugerir</button>
+                <div id="container-contadores-matriz" class="seletor-status" style="display:none;"></div>
+                <div class="quadro-numeros" id="volante-interativo"></div>
+                <div id="container-filtro-moldura" style="display:none;"><label>Proporção Moldura/Miolo</label><select id="cfg-proporcao-moldura"><option value="9x6">9 Moldura / 6 Miolo</option><option value="10x5">10 Moldura / 5 Miolo</option></select></div>
+                <div class="form-group"><label>Ímpares/Pares</label><select id="filtro-pares"><option value="qualquer">Qualquer</option><option value="8x7" selected>8 Ímpares / 7 Pares (ouro)</option><option value="9x6">9 Ímpares / 6 Pares</option></select></div>
+                <div class="form-group"><label>Quantidade de Jogos</label><input type="number" id="qtd-jogos" value="15" min="1" max="150"></div>
+                <button class="btn" onclick="window.executarMotorGerador()">⚙️ Gerar Apostas</button>
+            </div>
+            <div class="card"><h2>📋 Jogos Gerados</h2><div id="jogos-sugeridos-container"><p style="color:gray;">Configure e gere os jogos</p></div><div id="area-botao-integracao"></div></div>
+        </div>
+    </div>
     <div id="aba-alimentador" class="tab-content"><div class="grid-2"><div class="card"><h2>Alimentar Concurso Real</h2><div class="form-group"><label>Nº Concurso</label><input type="number" id="adm-concurso" placeholder="3112"></div><div class="form-group"><label>Data</label><input type="date" id="adm-data"></div><div class="form-group"><label>Dezenas (15 números)</label><input type="text" id="adm-dezenas" placeholder="01 02 03 ... 15"></div><button class="btn" id="btn-salvar-fire" style="background:var(--success);">💾 Salvar na Nuvem</button></div><div class="card"><h2>Últimos Sorteios</h2><div id="lista-concursos-salvos">Sincronizando Firebase...</div></div></div></div>
-    <div id="aba-consulta" class="tab-content"><div class="card"><h2>Buscar Concurso</h2><div style="display:flex; gap:10px; flex-wrap:wrap;"><input type="number" id="busca-id-concurso" placeholder="Número do sorteio"><button class="btn" id="btn-buscar-concurso" style="width:auto;">Buscar</button></div><div id="resultado-da-busca" class="resultado-busca-box" style="margin-top:20px;"></div></div></div>
+    <div id="aba-consulta" class="tab-content"><div class="card"><h2>Buscar Concurso</h2><div style="display:flex; gap:8px; flex-wrap:wrap;"><input type="number" id="busca-id-concurso" placeholder="Número do sorteio"><button class="btn" id="btn-buscar-concurso" style="width:auto;">Buscar</button></div><div id="resultado-da-busca" class="resultado-busca-box" style="margin-top:20px;"></div></div></div>
     <div id="aba-estatisticas" class="tab-content"><div class="grid-2"><div class="card"><h2>📈 Estatísticas Gerais</h2><div id="resumo-metricas-reais"></div></div><div class="card"><h2>🔥 Mapa de Calor</h2><div class="quadro-numeros" id="quadro-estatistico"></div></div></div></div>
     <div id="aba-conferidor" class="tab-content"><div class="grid-2"><div class="card"><h2>Conferência Avançada (Múltiplas)</h2><div class="form-group"><label>Resultado Oficial (15 dezenas)</label><input type="text" id="resultado-oficial" value="01 02 03 05 07 08 09 11 13 14 17 18 21 22 24"></div><div class="form-group"><label>Apostas (uma por linha - aceita de 15 a 18 números)</label><textarea id="jogos-usuario" rows="6" placeholder="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16"></textarea></div><button class="btn" style="background:var(--success);" onclick="window.conferirApostasLotofacil()">Conferir Pontuação</button></div><div class="card"><h2>Resumo de Prêmios Totais (Desdobrados)</h2><div class="painel-premios" id="resumo-premios-card" style="display:none;"><div class="premio-box"><h4>11 pts</h4><span id="count-11">0</span></div><div class="premio-box"><h4>12 pts</h4><span id="count-12">0</span></div><div class="premio-box"><h4>13 pts</h4><span id="count-13">0</span></div><div class="premio-box"><h4>14 pts</h4><span id="count-14">0</span></div><div class="premio-box"><h4>15 pts</h4><span id="count-15">0</span></div></div><div id="container-conferência"></div></div></div></div>
     <div id="aba-financeiro" class="tab-content"><div class="card"><h2>Balanço de Apostas Múltiplas</h2><div class="financeiro-grid"><div class="fin-card fin-custo"><p>Custo Total</p><span id="fin-val-custo">R$ 0,00</span></div><div class="fin-card fin-retorno"><p>Prêmios</p><span id="fin-val-retorno">R$ 0,00</span></div><div class="fin-card fin-balanco" id="fin-box-balanco"><p>Saldo</p><span id="fin-val-balanco">R$ 0,00</span></div></div></div></div>
@@ -711,8 +690,6 @@
 </div>
 
 <script type="module">
-    // Importações e lógica permanecem 100% idênticas às originais, sem nenhuma alteração.
-    // (Código original preservado na íntegra para garantir funcionamento total)
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
     import { getFirestore, collection, addDoc, getDocs, query, orderBy, where, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
@@ -730,13 +707,15 @@
     let configFinanceira = JSON.parse(localStorage.getItem('loterial_cfg')) || { precoAposta: 3.00, p11:7.00, p12:12.00, p13:30.00, p14:1500.00, p15:1700000.00 };
 
     const FATOR_APOSTAS_POR_TAMANHO = { 15: 1, 16: 16, 17: 136, 18: 816 };
+    
     const TABELA_DESDOBRAMENTO_PREMIOS = {
-        15: {15:{15:1,14:0,13:0,12:0,11:0},14:{15:0,14:1,13:0,12:0,11:0},13:{15:0,14:0,13:1,12:0,11:0},12:{15:0,14:0,13:0,12:1,11:0},11:{15:0,14:0,13:0,12:0,11:1}},
-        16: {15:{15:1,14:15,13:0,12:0,11:0},14:{15:0,14:2,13:14,12:0,11:0},13:{15:0,14:0,13:3,12:13,11:0},12:{15:0,14:0,13:0,12:4,11:12},11:{15:0,14:0,13:0,12:0,11:5}},
-        17: {15:{15:1,14:30,13:105,12:0,11:0},14:{15:0,14:3,13:42,12:91,11:0},13:{15:0,14:0,13:6,12:52,11:78},12:{15:0,14:0,13:0,12:10,11:60},11:{15:0,14:0,13:0,12:0,11:15}},
-        18: {15:{15:1,14:45,13:315,12:455,11:0},14:{15:0,14:4,13:84,12:364,11:364},13:{15:0,14:0,13:10,12:120,11:390},12:{15:0,14:0,13:0,12:20,11:240},11:{15:0,14:0,13:0,12:0,11:35}}
+        15: { 15: {15:1, 14:0, 13:0, 12:0, 11:0}, 14: {15:0, 14:1, 13:0, 12:0, 11:0}, 13: {15:0, 14:0, 13:1, 12:0, 11:0}, 12: {15:0, 14:0, 13:0, 12:1, 11:0}, 11: {15:0, 14:0, 13:0, 12:0, 11:1} },
+        16: { 15: {15:1, 14:15, 13:0, 12:0, 11:0}, 14: {15:0, 14:2, 13:14, 12:0, 11:0}, 13: {15:0, 14:0, 13:3, 12:13, 11:0}, 12: {15:0, 14:0, 13:0, 12:4, 11:12}, 11: {15:0, 14:0, 13:0, 12:0, 11:5} },
+        17: { 15: {15:1, 14:30, 13:105, 12:0, 11:0}, 14: {15:0, 14:3, 13:42, 12:91, 11:0}, 13: {15:0, 14:0, 13:6, 12:52, 11:78}, 12: {15:0, 14:0, 13:0, 12:10, 11:60}, 11: {15:0, 14:0, 13:0, 12:0, 11:15} },
+        18: { 15: {15:1, 14:45, 13:315, 12:455, 11:0}, 14: {15:0, 14:4, 13:84, 12:364, 11:364}, 13: {15:0, 14:0, 13:10, 12:120, 11:390}, 12: {15:0, 14:0, 13:0, 12:20, 11:240}, 11: {15:0, 14:0, 13:0, 12:0, 11:35} }
     };
 
+    // REGRA DO MONITOR DE LOGIN COM INTELIGÊNCIA TRIAL DE 3 DIAS AUTOMÁTICA
     onAuthStateChanged(auth, async (user) => {
         if(user) {
             try {
@@ -746,41 +725,226 @@
                 configurarTelasIniciais();
                 renderizarTabelaClientes(querySnapshot);
                 return;
-            } catch (e) { console.log("Acesso gerencial negado."); }
+            } catch (e) { }
+
             try {
                 const docSnap = await getDoc(doc(db, "usuarios", user.uid));
-                if(docSnap.exists() && docSnap.data().status_licenca === 'ativo') {
-                    document.getElementById('tela-bloqueio-login').style.display = 'none';
-                    document.getElementById('menu-admin').style.display = "none";
-                    configurarTelasIniciais();
-                } else { alert("⚠️ Licença pendente ou expirada."); await signOut(auth); }
-            } catch(e) { alert("Erro estrutural de validação."); await signOut(auth); }
-        } else { document.getElementById('tela-bloqueio-login').style.display = 'flex'; }
+                if(docSnap.exists()) {
+                    const dados = docSnap.data();
+                    
+                    if(dados.status_licenca === 'ativo') {
+                        document.getElementById('tela-bloqueio-login').style.display = 'none';
+                        document.getElementById('menu-admin').style.display = "none";
+                        configurarTelasIniciais();
+                        return;
+                    }
+                    
+                    if(dados.status_licenca === 'pendente' && dados.data_cadastro) {
+                        const agora = new Date().getTime();
+                        const milissegundosPorDia = 24 * 60 * 60 * 1000;
+                        const tempoDecorrido = agora - dados.data_cadastro;
+                        const diasDecorridos = tempoDecorrido / milissegundosPorDia;
+                        
+                        const diasDisponiveis = dados.dias_trial || 7;
+                        
+                        if(diasDecorridos < diasDisponiveis) {
+                            const diasRestantes = Math.ceil(diasDisponiveis - diasDecorridos);
+                            alert(`🎁 Período de Testes Ativo! Você possui mais ${diasRestantes} dia(s) de acesso gratuito.`);
+                            
+                            document.getElementById('tela-bloqueio-login').style.display = 'none';
+                            document.getElementById('menu-admin').style.display = "none";
+                            configurarTelasIniciais();
+                            return;
+                        }
+                    }
+                    
+                    alert("⚠️ Seu período de teste de 3 dias expirou!\n\nPara continuar utilizando o Loterial Pro, efetue o pagamento da sua licença e envie o comprovante ao administrador.");
+                    await signOut(auth);
+                } else {
+                    await signOut(auth);
+                }
+            } catch(e) { await signOut(auth); }
+        } else {
+            document.getElementById('tela-bloqueio-login').style.display = 'flex';
+        }
     });
 
-    window.abrirModalAjuda = () => { document.getElementById('modal-ajuda-plataforma').style.display = 'flex'; };
-    window.fecharModalAjuda = () => { document.getElementById('modal-ajuda-plataforma').style.display = 'none'; };
-    function renderizarTabelaClientes(querySnapshot) { /* mantido igual */ const tabela = document.getElementById('tabela-clientes-firebase'); tabela.innerHTML = ''; querySnapshot.forEach((docSnap) => { let data = docSnap.data(); let id = docSnap.id; let badgeClass = data.status_licenca === 'ativo' ? 'status-ativo' : 'status-pendente'; tabela.innerHTML += `<tr><td><strong>${data.email}</strong></td><td><span class="badge-status ${badgeClass}">${data.status_licenca.toUpperCase()}</span></td><td><button class="btn-mini-admin btn-ativar" onclick="window.alterarStatusLicencaCliente('${id}', 'ativo')">✓ Ativar</button><button class="btn-mini-admin btn-bloquear" onclick="window.alterarStatusLicencaCliente('${id}', 'pendente')">✕ Bloquear</button></td></tr>`; }); }
-    window.alterarStatusLicencaCliente = async (uidCliente, novoStatus) => { try { await updateDoc(doc(db, "usuarios", uidCliente), { status_licenca: novoStatus }); alert("Status atualizado!"); const novoSnapshot = await getDocs(collection(db, "usuarios")); renderizarTabelaClientes(novoSnapshot); } catch(e) { alert("Erro."); } };
-    window.definirModoLogin = (s)=>{ modoLoginAtActive=s; document.getElementById('btn-modo-entrar').className=s?"toggle-btn active":"toggle-btn"; document.getElementById('btn-modo-cadastrar').className=!s?"toggle-btn active":"toggle-btn"; document.getElementById('login-titulo').innerText=s?"Acessar Loterial Pro":"Criar Conta"; document.getElementById('btn-acao-auth').innerText=s?"Entrar":"Solicitar Licença"; document.getElementById('aviso-pagamento-cadastro').style.display = s ? "none" : "block"; };
-    window.processarFormularioAuth = async()=>{ const email=document.getElementById('log-email').value.trim(),senha=document.getElementById('log-senha').value; if(!email||!senha) return alert("Preencha tudo"); if(modoLoginAtActive) { try{ await signInWithEmailAndPassword(auth,email,senha); }catch(e){ alert("Falha login: "+e.message); } } else { try{ const res=await createUserWithEmailAndPassword(auth,email,senha); await setDoc(doc(db,"usuarios",res.user.uid),{email,status_licenca:"pendente",data_cadastro:new Date().toISOString()}); alert("📢 Conta criada com sucesso!\n\nImportante: Seu acesso está PENDENTE."); definirModoLogin(true); }catch(e){ alert("Erro registro: "+e.message); } } };
-    window.efetuarLogout = ()=>{ signOut(auth); document.getElementById('log-email').value=''; document.getElementById('log-senha').value=''; };
+    function renderizarTabelaClientes(querySnapshot) {
+        const tabela = document.getElementById('tabela-clientes-firebase');
+        tabela.innerHTML = '';
+        querySnapshot.forEach((docSnap) => {
+            let data = docSnap.data(), id = docSnap.id, badgeClass = data.status_licenca === 'ativo' ? 'status-ativo' : 'status-pendente';
+            tabela.innerHTML += `<tr><td><strong>${data.email}</strong></td><td><span class="badge-status ${badgeClass}">${data.status_licenca.toUpperCase()}</span></td><td><button class="btn-mini-admin btn-ativar" onclick="window.alterarStatusLicencaCliente('${id}', 'ativo')">✓ Ativar</button><button class="btn-mini-admin btn-bloquear" onclick="window.alterarStatusLicencaCliente('${id}', 'pendente')">✕ Bloquear</button></td></tr>`;
+        });
+    }
+
+    window.alterarStatusLicencaCliente = async (uidCliente, novoStatus) => {
+        try { await updateDoc(doc(db, "usuarios", uidCliente), { status_licenca: novoStatus }); const s = await getDocs(collection(db, "usuarios")); renderizarTabelaClientes(s); } catch(e) {}
+    };
+
+    window.definirModoLogin = (s)=>{ 
+        modoLoginAtActive=s; document.getElementById('btn-modo-entrar').className=s?"toggle-btn active":"toggle-btn"; document.getElementById('btn-modo-cadastrar').className=!s?"toggle-btn active":"toggle-btn"; document.getElementById('login-titulo').innerText=s?"Acessar Loterial Pro":"Criar Conta"; document.getElementById('btn-acao-auth').innerText=s?"Entrar":"Solicitar Licença"; document.getElementById('aviso-pagamento-cadastro').style.display = s ? "none" : "block";
+    };
+
+    window.processarFormularioAuth = async()=>{ 
+        const email=document.getElementById('log-email').value.trim(), senha=document.getElementById('log-senha').value; if(!email||!senha) return alert("Preencha tudo"); 
+        if(modoLoginAtActive) { try{ await signInWithEmailAndPassword(auth,email,senha); }catch(e){ alert("Falha: "+e.message); } } 
+        else { 
+            try{ 
+                const res=await createUserWithEmailAndPassword(auth,email,senha); 
+                await setDoc(doc(db,"usuarios",res.user.uid),{
+                    email,
+                    status_licenca:"pendente",
+                    data_cadastro: new Date().getTime(), 
+                    dias_trial: 7 
+                }); 
+                alert("📢 Conta criada com sucesso!\n\nVocê ganhou 7 dias de acesso gratuito para testar o sistema."); 
+                definirModoLogin(true); 
+            }catch(e){ alert("Erro: "+e.message); } 
+        } 
+    };
+    
+    window.efetuarLogout = () => { signOut(auth); };
     async function puxarConcursosFirebase() { try { const q=query(collection(db,"concursos"),orderBy("numero","asc")); const snap=await getDocs(q); bancoConcursos=[]; snap.forEach(d=>bancoConcursos.push(d.data())); if(bancoConcursos.length) processarMetricasNuvem(); } catch(e){} }
-    async function salvarNoFirebase(){ const num = parseInt(document.getElementById('adm-concurso').value), dataInput = document.getElementById('adm-data').value, textoDezenas = document.getElementById('adm-dezenas').value; if(!num || !dataInput) return alert("Preencha todos os campos."); try { const qDuplicidade = query(collection(db, "concursos"), where("numero", "==", num)); const snapDuplicidade = await getDocs(qDuplicidade); if(!snapDuplicidade.empty) { alert(`⚠️ Atenção: O Concurso Nº ${num} já está cadastrado no servidor!`); return; } } catch(e){} let dezenas = extrairDezenas(textoDezenas); if(dezenas.length !== 15) return alert("Insira 15 números exatos."); dezenas.sort((a,b)=>a-b); let partesData = dataInput.split('-'), dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`; let bordas = dezenas.filter(n => MOLDURA_NUMS.includes(n)).length, miolos = dezenas.filter(n => MIOLO_NUMS.includes(n)).length, impares = dezenas.filter(n => n%2 !== 0).length; try { await addDoc(collection(db, "concursos"), { numero: num, data: dataFormatada, resultado: dezenas, metricas: { borda: bordas, miolo: miolos, impares: impares, pares: 15 - impares } }); alert("Concurso salvo com sucesso!"); puxarConcursosFirebase(); } catch(e){ alert("Erro: " + e.message); } }
-    function extrairDezenas(texto){ let limpo=texto.trim().replace(/[\s,;-]+/g,' '); return limpo.split(/\s+/).map(Number).filter(n=>n>=1&&n<=25); }
-    function processarMetricasNuvem(){ contagemFrequencia.fill(0); atrasosDezenas.fill(0); bancoConcursos.forEach(c=>c.resultado.forEach(n=>contagemFrequencia[n]++)); for(let i=1;i<=25;i++){ let atraso=0; for(let j=bancoConcursos.length-1;j>=0;j--){ if(bancoConcursos[j].resultado.includes(i)) break; atraso++; } atrasosDezenas[i]=atraso; } const container=document.getElementById('lista-concursos-salvos'); container.innerHTML=''; bancoConcursos.slice(-5).reverse().forEach(c=>{ container.innerHTML+=`<div class="linha-estatistica" style="padding:10px 0; border-bottom:1px solid #e2e8f0;"><div><strong>Conc. ${c.numero}</strong> <small>${c.data}</small><br><span style="font-family:monospace;">${c.resultado.map(n=>String(n).padStart(2,'0')).join(' ')}</span></div><span style="background:#e2e8f0; border-radius:40px; padding:4px 12px;">${c.metricas.borda}B/${c.metricas.miolo}M</span></div>`; }); let ordenadas=[]; for(let i=1;i<=25;i++) ordenadas.push({num:i,atraso:atrasosDezenas[i]}); ordenadas.sort((a,b)=>b.atraso-a.atraso); document.getElementById('resumo-metricas-reais').innerHTML=`<p>🔥 Atrasadas: ${ordenadas.slice(0,4).map(x=>`<span style="background:var(--warning); color:white; padding:3px 10px; border-radius:40px; margin:2px;">${String(x.num).padStart(2,'0')} (${x.atraso})</span>`).join(' ')}</p><p>📊 Total de sorteios: ${bancoConcursos.length}</p>`; let avg=contagemFrequencia.slice(1).reduce((a,b)=>a+b,0)/25; for(let i=1;i<=25;i++){ let f=contagemFrequencia[i]; document.getElementById(`freq-${i}`).innerText=`${f}x`; document.getElementById(`bola-est-${i}`).className="bola-est "+(f>avg?"quente":"fria"); } }
-    window.gerarSugestaoIA=()=>{ if(!bancoConcursos.length) return alert("Alimente concursos primeiro"); let ult=bancoConcursos[bancoConcursos.length-1]; let ordenadas=[]; for(let i=1;i<=25;i++) ordenadas.push({num:i,atraso:atrasosDezenas[i]}); ordenadas.sort((a,b)=>b.atraso-a.atraso); let box=document.getElementById('box-sugestao-ia'); box.innerHTML=`<strong>🧠 IA Cloud:</strong> Último sorteio ${ult.numero} → ${ult.metricas.borda}B / ${ult.metricas.miolo}M. Mais atrasadas: ${ordenadas.slice(0,4).map(x=>String(x.num).padStart(2,'0')).join(', ')}.`; box.style.display='block'; };
-    window.mudarAba=(id)=>{ document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.getElementById(id).classList.add('active'); let activeBtn=Array.from(document.querySelectorAll('.tab-btn')).find(b=>b.getAttribute('onclick').includes(id)); if(activeBtn) activeBtn.classList.add('active'); };
-    function configurarTelasIniciais(){ document.getElementById('cfg-preco-aposta').value=configFinanceira.precoAposta; document.getElementById('cfg-premio-11').value=configFinanceira.p11; document.getElementById('cfg-premio-12').value=configFinanceira.p12; document.getElementById('cfg-premio-13').value=configFinanceira.p13; document.getElementById('cfg-premio-14').value=configFinanceira.p14; document.getElementById('cfg-premio-15').value=configFinanceira.p15; let volante=document.getElementById('volante-interativo'); volante.innerHTML=''; for(let i=1;i<=25;i++) volante.innerHTML+=`<div class="bola-sel tipo-livre" id="bola-sel-${i}" onclick="window.gerenciarCliqueVolante(${i})">${String(i).padStart(2,'0')}<span class="legenda-bol" id="lbl-sel-${i}">livre</span></div>`; let quadro=document.getElementById('quadro-estatistico'); quadro.innerHTML=''; for(let i=1;i<=25;i++) quadro.innerHTML+=`<div class="bola-est" id="bola-est-${i}">${String(i).padStart(2,'0')}<span class="freq" id="freq-${i}">0x</span></div>`; puxarConcursosFirebase(); window.adaptarVolanteEstrategia(); }
-    window.adaptarVolanteEstrategia=()=>{ const est=document.getElementById('seletor-estrategia').value; definicaoDezenas.fill(0); document.getElementById('container-contadores-matriz').style.display='none'; document.getElementById('container-filtro-moldura').style.display='none'; for(let i=1;i<=25;i++){ let el=document.getElementById(`bola-sel-${i}`); let lbl=document.getElementById(`lbl-sel-${i}`); el.className="bola-sel tipo-livre"; lbl.innerText="livre"; } if(est==='matriz'){ document.getElementById('container-contadores-matriz').style.display='flex'; window.atualizarContadoresMatriz(); } else if(est==='moldura'){ document.getElementById('container-filtro-moldura').style.display='block'; MOLDURA_NUMS.forEach(n=>{ document.getElementById(`bola-sel-${n}`).classList.add('tipo-fixa'); document.getElementById(`lbl-sel-${n}`).innerText="borda"; }); MIOLO_NUMS.forEach(n=>{ document.getElementById(`bola-sel-${n}`).classList.add('tipo-semi'); document.getElementById(`lbl-sel-${n}`).innerText="miolo"; }); } else if(est==='erre4'||est==='exclusao'||est==='erre6'){ document.getElementById('container-contadores-matriz').style.display='flex'; window.atualizarContadoresMatriz(); } else if(est==='grupos'){ let ult=bancoConcursos.length?bancoConcursos[bancoConcursos.length-1].resultado:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; for(let i=1;i<=25;i++){ let el=document.getElementById(`bola-sel-${i}`),lbl=document.getElementById(`lbl-sel-${i}`); if(ult.includes(i)){ el.classList.add('tipo-fixa'); lbl.innerText="Grp A"; } else if(contagemFrequencia[i]>=2){ el.classList.add('tipo-semi'); lbl.innerText="Grp B"; } else lbl.innerText="Grp C"; } } else if(est==='ciclo'){ document.getElementById('container-contadores-matriz').style.display='flex'; window.atualizarContadoresMatriz(); } };
-    window.gerenciarCliqueVolante=(numero)=>{ const est=document.getElementById('seletor-estrategia').value; if(!['matriz','erre4','exclusao','erre6','ciclo'].includes(est)) return; let el=document.getElementById(`bola-sel-${numero}`),lbl=document.getElementById(`lbl-sel-${numero}`); if(est==='matriz'){ let p=(definicaoDezenas[numero]+1)%3; definicaoDezenas[numero]=p; el.className="bola-sel"; if(p===0) el.classList.add('tipo-livre'),lbl.innerText="livre"; else if(p===1) el.classList.add('tipo-fixa'),lbl.innerText="fixa"; else el.classList.add('tipo-semi'),lbl.innerText="semi"; } else if(est==='erre4' || est==='exclusao' || est==='erre6'){ let p=definicaoDezenas[numero]===0?3:0; definicaoDezenas[numero]=p; el.className="bola-sel"; if(p===0) el.classList.add('tipo-livre'),lbl.innerText="livre"; else el.classList.add('tipo-excluida'),lbl.innerText="excluir"; } else if(est==='ciclo'){ let p=definicaoDezenas[numero]===0?4:0; definicaoDezenas[numero]=p; el.className="bola-sel"; if(p===0) el.classList.add('tipo-livre'),lbl.innerText="livre"; else el.classList.add('tipo-ciclo'),lbl.innerText="ciclo"; } window.atualizarContadoresMatriz(); };
-    window.atualizarContadoresMatriz=()=>{ const est=document.getElementById('seletor-estrategia').value; let fixas=definicaoDezenas.filter(x=>x===1).length,semis=definicaoDezenas.filter(x=>x===2).length,excl=definicaoDezenas.filter(x=>x===3).length,ciclo=definicaoDezenas.filter(x=>x===4).length; const ctr=document.getElementById('container-contadores-matriz'); if(est==='matriz') ctr.innerHTML=`<div>🔮 Fixas: ${fixas}/5</div><div>🌿 Semi: ${semis}/12</div>`; else if(est==='erre4') ctr.innerHTML=`<div>❌ Eliminadas R4: ${excl}/4</div>`; else if(est==='exclusao') ctr.innerHTML=`<div>❌ Eliminar R5: ${excl}/5</div>`; else if(est==='erre6') ctr.innerHTML=`<div>🚫 Eliminadas R6: ${excl}/6</div>`; else if(est==='ciclo') ctr.innerHTML=`<div>🔄 Ciclo de dezenas: ${ciclo}</div>`; };
-    window.executarMotorGerador=()=>{ const est=document.getElementById('seletor-estrategia').value, propImp=document.getElementById('filtro-pares').value, qtd=parseInt(document.getElementById('qtd-jogos').value)||10, tamanhoAlvoBilhete = parseInt(document.getElementById('cfg-tamanho-bilhete').value); let container=document.getElementById('jogos-sugeridos-container'),areaBotao=document.getElementById('area-botao-integracao'); container.innerHTML=''; areaBotao.innerHTML=''; jogosGeradosTextoPuro=''; let lista=[],ult=bancoConcursos.length?bancoConcursos[bancoConcursos.length-1].resultado:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; for(let g=0;g<qtd;g++){ let jogo=[],seg=0; while(jogo.length < tamanhoAlvoBilhete && seg < 4000){ seg++; jogo=[]; if(est==='matriz'){ let f=[],s=[],l=[]; for(let i=1;i<=25;i++){ if(definicaoDezenas[i]===1)f.push(i); else if(definicaoDezenas[i]===2)s.push(i); else l.push(i); } if(f.length!==5||s.length!==12){ alert("Configure 5 fixas e 12 semi"); return; } jogo=[...f,...s.sort(()=>Math.random()-0.5).slice(0,6),...l.sort(()=>Math.random()-0.5).slice(0, tamanhoAlvoBilhete - 11)]; } else if(est==='moldura'){ let prop=document.getElementById('cfg-proporcao-moldura').value,qtdM=prop==='9x6'?9:10; if(tamanhoAlvoBilhete > 15) { qtdM = Math.floor(tamanhoAlvoBilhete * 0.6); } jogo.push(...[...MOLDURA_NUMS].sort(()=>Math.random()-0.5).slice(0,qtdM)); jogo.push(...[...MIOLO_NUMS].sort(()=>Math.random()-0.5).slice(0,tamanhoAlvoBilhete-qtdM)); } else if(est==='linhas'){ let dezenasLinhas = Array.from({length: 25}, (_, i) => i + 1).sort(() => Math.random() - 0.5); jogo = dezenasLinhas.slice(0, tamanhoAlvoBilhete); } else if(est==='erre4' || est==='exclusao' || est==='erre6'){ let ativas=[]; for(let i=1;i<=25;i++) if(definicaoDezenas[i]!==3) ativas.push(i); let nec = 20; if(est === 'erre4') nec = 21; if(est === 'erre6') nec = 19; if(ativas.length !== nec){ alert(`Selecione exatamente ${25 - nec} dezenas para eliminar no tabuleiro!`); return; } jogo=[...ativas].sort(()=>Math.random()-0.5).slice(0,tamanhoAlvoBilhete); } else if(est==='grupos'){ let a=[],b=[],c=[]; for(let i=1;i<=25;i++){ if(ult.includes(i)) a.push(i); else if(contagemFrequencia[i]>=2) b.push(i); else c.push(i); } jogo.push(...a.sort(()=>Math.random()-0.5).slice(0,9),...b.sort(()=>Math.random()-0.5).slice(0,4),...c.sort(()=>Math.random()-0.5).slice(0, tamanhoAlvoBilhete - 13)); } else if(est==='ciclo'){ let ciclos=[]; for(let i=1;i<=25;i++) if(definicaoDezenas[i]===4) ciclos.push(i); if(ciclos.length<1){alert("Marque números ciclo");return;} let restantes=[]; for(let i=1;i<=25;i++) if(definicaoDezenas[i]!==4) restantes.push(i); jogo=[...ciclos,...restantes.sort(()=>Math.random()-0.5).slice(0,tamanhoAlvoBilhete-ciclos.length)]; } jogo=[...new Set(jogo)].sort((a,b)=>a-b); if(jogo.length === tamanhoAlvoBilhete){ let imp=jogo.filter(n=>n%2!==0).length; if(propImp==='8x7' && tamanhoAlvoBilhete===15 && imp!==8) jogo=[]; if(propImp==='9x6' && tamanhoAlvoBilhete===15 && imp!==9) jogo=[]; } } if(jogo.length === tamanhoAlvoBilhete) lista.push(jogo),jogosGeradosTextoPuro+=jogo.map(n=>String(n).padStart(2,'0')).join(' ')+"\n"; } lista.forEach(j=>{ let imp=j.filter(n=>n%2!==0).length; container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${j.map(n=>`<div class="dezena-mini" style="background:var(--primary)">${String(n).padStart(2,'0')}</div>`).join('')}</div><div class="metadados-jogo"><span>${j.length} Dezenas (${imp}Í / ${j.length-imp}P)</span><span>${est.toUpperCase()}</span></div></div>`; }); if(jogosGeradosTextoPuro) areaBotao.innerHTML=`<button class="btn" style="background:var(--success);" onclick="window.enviarParaOConferidor()">🚀 Enviar ao Conferidor</button>`; };
+    
+    async function salvarNoFirebase(){ 
+        const num = parseInt(document.getElementById('adm-concurso').value), dataInput = document.getElementById('adm-data').value, textoDezenas = document.getElementById('adm-dezenas').value; if(!num || !dataInput) return alert("Preencha tudo"); 
+        try { const q=query(collection(db, "concursos"), where("numero", "==", num)); const s=await getDocs(q); if(!s.empty){ alert("Já cadastrado!"); return; } } catch(e){}
+        let dezenas = extrairDezenas(textoDezenas); if(dezenas.length !== 15) return alert("Insira 15 números."); dezenas.sort((a,b) => a-b); 
+        let partesData = dataInput.split('-'), dataFormatada = `${partesData[2]}/${partesData[1]}/${partesData[0]}`; 
+        try { await addDoc(collection(db, "concursos"), { numero: num, data: dataFormatada, resultado: dezenas, metricas: { borda: dezenas.filter(n => MOLDURA_NUMS.includes(n)).length, miolo: dezenas.filter(n => MIOLO_NUMS.includes(n)).length, impares: dezenas.filter(n => n%2 !== 0).length, pares: 15 - dezenas.filter(n => n%2 !== 0).length } }); alert("Salvo!"); configurarTelasIniciais(); } catch(e){}
+    }
+
+    function extrairDezenas(texto){ return texto.trim().replace(/[\s,;-]+/g,' ').split(/\s+/).map(Number).filter(n=>n>=1&&n<=25); }
+    
+    function processarMetricasNuvem(){ contagemFrequencia.fill(0); atrasosDezenas.fill(0); bancoConcursos.forEach(c=>c.resultado.forEach(n=>contagemFrequencia[n]++)); for(let i=1;i<=25;i++){ let atr=0; for(let j=bancoConcursos.length-1;j>=0;j--){ if(bancoConcursos[j].resultado.includes(i)) break; atr++; } atrasosDezenas[i]=atr; } const container=document.getElementById('lista-concursos-salvos'); container.innerHTML=''; bancoConcursos.slice(-5).reverse().forEach(c=>{ container.innerHTML+=`<div style="padding:6px 0; border-bottom:1px solid #e2e8f0;"><strong>Conc. ${c.numero}</strong> - ${c.resultado.map(n=>String(n).padStart(2,'0')).join(' ')}</div>`; }); let ord=[]; for(let i=1;i<=25;i++) ord.push({num:i,atr:atrasosDezenas[i]}); ord.sort((a,b)=>b.atr-a.atr); document.getElementById('resumo-metricas-reais').innerHTML=`<p>🔥 Mais Atrasadas: ${ord.slice(0,4).map(x=>`<b>${x.num}</b>`).join(', ')}</p>`; let avg=contagemFrequencia.slice(1).reduce((a,b)=>a+b,0)/25; for(let i=1;i<=25;i++){ let f=contagemFrequencia[i]; document.getElementById(`freq-${i}`).innerText=`${f}x`; document.getElementById(`bola-est-${i}`).className="bola-est "+(f>avg?"quente":"fria"); } }
+    window.gerarSugestaoIA=()=>{ if(!bancoConcursos.length) return alert("Alimente concursos primeiro"); let ult=bancoConcursos[bancoConcursos.length-1]; document.getElementById('box-sugestao-ia').innerHTML=`<strong>🧠 IA:</strong> Último sorteio ${ult.numero} veio equilibrado. Recomendamos Matrizes Reduzidas ou Grupos Interdependentes para esta rodada.`; document.getElementById('box-sugestao-ia').style.display='block'; };
+    window.mudarAba=(id)=>{ document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.getElementById(id).classList.add('active'); let b=Array.from(document.querySelectorAll('.tab-btn')).find(x=>x.getAttribute('onclick').includes(id)); if(b) b.classList.add('active'); };
+    
+    function configurarTelasIniciais(){ 
+        let volante=document.getElementById('volante-interativo'); volante.innerHTML=''; for(let i=1;i<=25;i++) volante.innerHTML+=`<div class="bola-sel tipo-livre" id="bola-sel-${i}" onclick="window.gerenciarCliqueVolante(${i})">${String(i).padStart(2,'0')}<span class="legenda-bol" id="lbl-sel-${i}">livre</span></div>`; 
+        let quadro=document.getElementById('quadro-estatistico'); quadro.innerHTML=''; for(let i=1;i<=25;i++) quadro.innerHTML+=`<div class="bola-est" id="bola-est-${i}">${String(i).padStart(2,'0')}<span class="freq" id="freq-${i}">0x</span></div>`; 
+        puxarConcursosFirebase(); window.adaptarVolanteEstrategia(); 
+    }
+    
+    window.adaptarVolanteEstrategia=()=>{ 
+        const est=document.getElementById('seletor-estrategia').value; definicaoDezenas.fill(0); document.getElementById('container-contadores-matriz').style.display='none'; document.getElementById('container-filtro-moldura').style.display='none'; 
+        for(let i=1;i<=25;i++){ let el=document.getElementById(`bola-sel-${i}`); let lbl=document.getElementById(`lbl-sel-${i}`); el.className="bola-sel tipo-livre"; lbl.innerText="livre"; } 
+        if(['matriz','erre4','exclusao','erre6','cinco_grupos','cinco_de_cinco','oito_fixas','nove_fixas','ciclo'].includes(est)){ document.getElementById('container-contadores-matriz').style.display='flex'; window.atualizarContadoresMatriz(); } 
+        if(est==='moldura'){ document.getElementById('container-filtro-moldura').style.display='block'; MOLDURA_NUMS.forEach(n=>{ document.getElementById(`bola-sel-${n}`).className="bola-sel tipo-fixa"; document.getElementById(`lbl-sel-${n}`).innerText="borda"; }); MIOLO_NUMS.forEach(n=>{ document.getElementById(`bola-sel-${n}`).className="bola-sel tipo-semi"; document.getElementById(`lbl-sel-${n}`).innerText="miolo"; }); }
+    };
+    
+    window.gerenciarCliqueVolante=(numero)=>{ 
+        const est=document.getElementById('seletor-estrategia').value; if(!['matriz','erre4','exclusao','erre6','ciclo','cinco_grupos','cinco_de_cinco','oito_fixas','nove_fixas'].includes(est)) return; 
+        let el=document.getElementById(`bola-sel-${numero}`), lbl=document.getElementById(`lbl-sel-${numero}`); 
+        
+        if(est==='matriz'){ let p=(definicaoDezenas[numero]+1)%3; definicaoDezenas[numero]=p; el.className="bola-sel " + (p===0?"tipo-livre":(p===1?"tipo-fixa":"tipo-semi")); lbl.innerText=p===0?"livre":(p===1?"fixa":"semi"); } 
+        else if(['erre4','exclusao','erre6'].includes(est)){ let p=definicaoDezenas[numero]===0?3:0; definicaoDezenas[numero]=p; el.className="bola-sel "+(p===3?"tipo-excluida":"tipo-livre"); lbl.innerText=p===3?"excluir":"livre"; } 
+        else if(est==='ciclo'){ let p=definicaoDezenas[numero]===0?4:0; definicaoDezenas[numero]=p; el.className="bola-sel "+(p===4?"tipo-ciclo":"tipo-livre"); lbl.innerText=p===4?"ciclo":"livre"; } 
+        else if(['oito_fixas','nove_fixas'].includes(est)) {
+            let max = est==='oito_fixas'?8:9; let p=definicaoDezenas[numero]===0?1:0;
+            if(p===1 && definicaoDezenas.filter(x=>x===1).length >= max) return;
+            definicaoDezenas[numero]=p; el.className="bola-sel "+(p===1?"tipo-fixa":"tipo-livre"); lbl.innerText=p===1?"fixa":"livre";
+        }
+        else if(['cinco_grupos','cinco_de_cinco'].includes(est)){
+            if(definicaoDezenas[numero]!==0) { definicaoDezenas[numero]=0; el.className="bola-sel tipo-livre"; lbl.innerText="livre"; window.atualizarContadoresMatriz(); return; }
+            if(est==='cinco_grupos' && definicaoDezenas.filter(x=>x===1).length < 5) { definicaoDezenas[numero]=1; el.className="bola-sel tipo-fixa"; lbl.innerText="fixa"; window.atualizarContadoresMatriz(); return; }
+            let maxG = est==='cinco_grupos'?4:5;
+            for(let g=1; g<=5; g++) { if(definicaoDezenas.filter(x=>x===(g+10)).length < maxG) { definicaoDezenas[numero]=g+10; el.className=`bola-sel g${g}`; lbl.innerText=`Grp ${g}`; break; } }
+        }
+        window.atualizarContadoresMatriz(); 
+    };
+    
+    window.atualizarContadoresMatriz=()=>{ 
+        const est=document.getElementById('seletor-estrategia').value; 
+        let ctr=document.getElementById('container-contadores-matriz'); 
+        let f=definicaoDezenas.filter(x=>x===1).length, e=definicaoDezenas.filter(x=>x===3).length;
+        if(est==='matriz') ctr.innerHTML=`<div>🔮 Fixas: ${f}/5</div><div>🌿 Semi: ${definicaoDezenas.filter(x=>x===2).length}/12</div>`; 
+        else if(est==='erre4') ctr.innerHTML=`<div>❌ Excluir: ${e}/4</div>`; else if(est==='exclusao') ctr.innerHTML=`<div>❌ Excluir: ${e}/5</div>`; else if(est==='erre6') ctr.innerHTML=`<div>❌ Excluir: ${e}/6</div>`;
+        else if(['oito_fixas','nove_fixas'].includes(est)) ctr.innerHTML=`<div>🔮 Fixas Marcardas: ${f}/${est==='oito_fixas'?8:9}</div>`;
+        else if(['cinco_grupos','cinco_de_cinco'].includes(est)) {
+            ctr.innerHTML=`${est==='cinco_grupos'?`<div>🔮 Fx: ${f}/5</div>`:''}<div>G1: ${definicaoDezenas.filter(x=>x===11).length}</div><div>G2: ${definicaoDezenas.filter(x=>x===12).length}</div><div>G3: ${definicaoDezenas.filter(x=>x===13).length}</div><div>G4: ${definicaoDezenas.filter(x=>x===14).length}</div><div>G5: ${definicaoDezenas.filter(x=>x===15).length}</div>`;
+        } else ctr.innerHTML=`<div>Tabuleiro Ativo</div>`;
+    };
+    
+    window.executarMotorGerador=()=>{ 
+        const est=document.getElementById('seletor-estrategia').value, propImp=document.getElementById('filtro-pares').value, qtd=parseInt(document.getElementById('qtd-jogos').value)||15, tamB = parseInt(document.getElementById('cfg-tamanho-bilhete').value);
+        let container=document.getElementById('jogos-sugeridos-container'), areaBotao=document.getElementById('area-botao-integracao'); container.innerHTML=''; areaBotao.innerHTML=''; jogosGeradosTextoPuro=''; let lista=[];
+        
+        if(est==='cinco_de_cinco' && (definicaoDezenas.filter(x=>x===11).length!==5 || definicaoDezenas.filter(x=>x===12).length!==5 || definicaoDezenas.filter(x=>x===13).length!==5 || definicaoDezenas.filter(x=>x===14).length!==5 || definicaoDezenas.filter(x=>x===15).length!==5)) return alert("Preencha os 5 grupos com 5 números cada!");
+        if(est==='oito_fixas' && definicaoDezenas.filter(x=>x===1).length!==8) return alert("Marque exatamente 8 dezenas fixas!");
+        if(est==='nove_fixas' && definicaoDezenas.filter(x=>x===1).length!==9) return alert("Marque exatamente 9 dezenas fixas!");
+
+        for(let g=0;g<qtd;g++){ 
+            let jogo=[], seg=0; 
+            while(jogo.length < tamB && seg < 4000){ 
+                seg++; jogo=[];
+                if(est==='oito_fixas' || est==='nove_fixas') {
+                    let fx=[], varS=[]; for(let i=1;i<=25;i++) { if(definicaoDezenas[i]===1) fx.push(i); else varS.push(i); }
+                    jogo = [...fx, ...varS.sort(()=>Math.random()-0.5).slice(0, tamB - fx.length)];
+                } else if(est==='cinco_de_cinco') {
+                    let g1=[], g2=[], g3=[], g4=[], g5=[];
+                    for(let i=1;i<=25;i++) {
+                        if(definicaoDezenas[i]===11) g1.push(i); if(definicaoDezenas[i]===12) g2.push(i); if(definicaoDezenas[i]===13) g3.push(i); if(definicaoDezenas[i]===14) g4.push(i); if(definicaoDezenas[i]===15) g5.push(i);
+                    }
+                    jogo = [...g1.sort(()=>Math.random()-0.5).slice(0,3), ...g2.sort(()=>Math.random()-0.5).slice(0,3), ...g3.sort(()=>Math.random()-0.5).slice(0,3), ...g4.sort(()=>Math.random()-0.5).slice(0,3), ...g5.sort(()=>Math.random()-0.5).slice(0,3)];
+                } else if(est==='cinco_grupos') {
+                    let fx=[], g1=[], g2=[], g3=[], g4=[], g5=[];
+                    for(let i=1;i<=25;i++) {
+                        if(definicaoDezenas[i]===1) fx.push(i); if(definicaoDezenas[i]===11) g1.push(i); if(definicaoDezenas[i]===12) g2.push(i); if(definicaoDezenas[i]===13) g3.push(i); if(definicaoDezenas[i]===14) g4.push(i); if(definicaoDezenas[i]===15) g5.push(i);
+                    }
+                    jogo = [...fx, ...g1.sort(()=>Math.random()-0.5).slice(0,2), ...g2.sort(()=>Math.random()-0.5).slice(0,2), ...g3.sort(()=>Math.random()-0.5).slice(0,2), ...g4.sort(()=>Math.random()-0.5).slice(0,2), ...g5.sort(()=>Math.random()-0.5).slice(0,2)];
+                } else if(est==='matriz'){ 
+                    let f=[],s=[],l=[]; for(let i=1;i<=25;i++){ if(definicaoDezenas[i]===1)f.push(i); else if(definicaoDezenas[i]===2)s.push(i); else l.push(i); } 
+                    jogo=[...f,...s.sort(()=>Math.random()-0.5).slice(0,6),...l.sort(()=>Math.random()-0.5).slice(0, tamB - 11)]; 
+                } else if(est==='moldura'){ 
+                    let qM = Math.floor(tamB * 0.6); jogo.push(...[...MOLDURA_NUMS].sort(()=>Math.random()-0.5).slice(0,qM)); jogo.push(...[...MIOLO_NUMS].sort(()=>Math.random()-0.5).slice(0,tamB-qM)); 
+                } else if(est==='linhas' || est==='grupos' || est==='ciclo'){
+                    let base = Array.from({length: 25}, (_, i) => i + 1).sort(() => Math.random() - 0.5); jogo = base.slice(0, tamB);
+                } else if(['erre4','exclusao','erre6'].includes(est)){
+                    let at=[]; for(let i=1;i<=25;i++) if(definicaoDezenas[i]!==3) at.push(i);
+                    jogo = at.sort(()=>Math.random()-0.5).slice(0, tamB);
+                }
+                jogo=[...new Set(jogo)].sort((a,b)=>a-b);
+                if(jogo.length === tamB && propImp!=='qualquer') {
+                    let imp = jogo.filter(n=>n%2!==0).length;
+                    if(propImp==='8x7' && tamB===15 && imp!==8) jogo=[]; if(propImp==='9x6' && tamB===15 && imp!==9) jogo=[];
+                }
+            }
+            if(jogo.length === tamB) lista.push(jogo), jogosGeradosTextoPuro+=jogo.map(n=>String(n).padStart(2,'0')).join(' ')+"\n";
+        }
+        lista.forEach(j=>{ container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${j.map(n=>`<div class="dezena-mini" style="background:var(--primary)">${String(n).padStart(2,'0')}</div>`).join('')}</div><div class="metadados-jogo"><span><b>${j.length} Dezenas</b></span> · <span>${est.toUpperCase()}</span></div></div>`; });
+        if(jogosGeradosTextoPuro) areaBotao.innerHTML=`<button class="btn" style="background:var(--success);" onclick="window.enviarParaOConferidor()">🚀 Enviar ao Conferidor</button>`;
+    };
+
     window.enviarParaOConferidor=()=>{ if(jogosGeradosTextoPuro) document.getElementById('jogos-usuario').value=jogosGeradosTextoPuro.trim(), mudarAba('aba-conferidor'), window.conferirApostasLotofacil(); };
-    window.conferirApostasLotofacil=()=>{ let ofi=extrairDezenas(document.getElementById('resultado-oficial').value), txtUser=document.getElementById('jogos-usuario').value, container=document.getElementById('container-conferência'); if(ofi.length!==15) return alert("O resultado oficial precisa conter exatamente 15 números"); container.innerHTML='<h3>Detalhamento de Acertos Múltiplos</h3>'; totalJogosConferidos=0; custoTotalMúltiploCalculado = 0; acertosGlobais={11:0,12:0,13:0,14:0,15:0}; txtUser.split('\n').forEach(linha=>{ let jogo=extrairDezenas(linha); if(jogo.length >= 15 && jogo.length <= 18){ totalJogosConferidos++; let tam = jogo.length; custoTotalMúltiploCalculado += FATOR_APOSTAS_POR_TAMANHO[tam] * configFinanceira.precoAposta; let acertosReais = jogo.filter(n=>ofi.includes(n)).length; let descritivoMúltiplo = ""; if (acertosReais >= 11 && TABELA_DESDOBRAMENTO_PREMIOS[tam] && TABELA_DESDOBRAMENTO_PREMIOS[tam][acertosReais]) { let tabelaFatores = TABELA_DESDOBRAMENTO_PREMIOS[tam][acertosReais]; acertosGlobais[11] += tabelaFatores[11] || 0; acertosGlobais[12] += tabelaFatores[12] || 0; acertosGlobais[13] += tabelaFatores[13] || 0; acertosGlobais[14] += tabelaFatores[14] || 0; acertosGlobais[15] += tabelaFatores[15] || 0; let partesPremiadas = []; if(tabelaFatores[15]) partesPremiadas.push(`<b>${tabelaFatores[15]}</b> de 15pt`); if(tabelaFatores[14]) partesPremiadas.push(`<b>${tabelaFatores[14]}</b> de 14pt`); if(tabelaFatores[13]) partesPremiadas.push(`<b>${tabelaFatores[13]}</b> de 13pt`); if(tabelaFatores[12]) partesPremiadas.push(`<b>${tabelaFatores[12]}</b> de 12pt`); if(tabelaFatores[11]) partesPremiadas.push(`<b>${tabelaFatores[11]}</b> de 11pt`); descritivoMúltiplo = ` ➔ Equivale a: ${partesPremiadas.join(' + ')}`; } let cor=acertosReais>=14?'var(--warning)':(acertosReais>=11?'var(--cold)':'#94a3b8'); container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${jogo.map(n=>`<div class="dezena-mini" style="background:${ofi.includes(n)?'var(--success)':'#cbd5e1'}">${String(n).padStart(2,'0')}</div>`).join('')}</div><div><span style="background:${cor};color:white;padding:4px 12px;border-radius:30px; font-size:0.8rem;">Bilhete ${tam} dezenas: ${acertosReais} Acertos Diretos</span><p style="font-size:0.75rem; color:var(--gray); margin-top:6px;">${descritivoMúltiplo}</p></div></div>`; } }); if(totalJogosConferidos){ document.getElementById('resumo-premios-card').style.display='grid'; Object.keys(acertosGlobais).forEach(p=>document.getElementById(`count-${p}`).innerText=acertosGlobais[p]); calcularPainelFinanceiro(); } };
-    function calcularPainelFinanceiro(){ let custo = custoTotalMúltiploCalculado, retorno=(acertosGlobais[11]*configFinanceira.p11)+(acertosGlobais[12]*configFinanceira.p12)+(acertosGlobais[13]*configFinanceira.p13)+(acertosGlobais[14]*configFinanceira.p14)+(acertosGlobais[15]*configFinanceira.p15), saldo=retorno-custo; document.getElementById('fin-val-custo').innerText=custo.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); document.getElementById('fin-val-retorno').innerText=retorno.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); document.getElementById('fin-val-balanco').innerText=saldo.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); let box=document.getElementById('fin-box-balanco'); box.className="fin-card fin-balanco "+(saldo>0?"lucro":(saldo<0?"prejuizo":"")); }
-    window.salvarConfiguracoesFinanceiras=()=>{ configFinanceira={ precoAposta:parseFloat(document.getElementById('cfg-preco-aposta').value), p11:parseFloat(document.getElementById('cfg-premio-11').value), p12:parseFloat(document.getElementById('cfg-premio-12').value), p13:parseFloat(document.getElementById('cfg-premio-13').value), p14:parseFloat(document.getElementById('cfg-premio-14').value), p15:parseFloat(document.getElementById('cfg-premio-15').value) }; localStorage.setItem('loterial_cfg',JSON.stringify(configFinanceira)); alert("Valores salvos!"); };
-    document.getElementById('btn-salvar-fire').onclick=salvarNoFirebase; document.getElementById('btn-buscar-concurso').onclick=async()=>{ let num=parseInt(document.getElementById('busca-id-concurso').value); if(!num) return; const q=query(collection(db,"concursos"),where("numero","==",num)); const snap=await getDocs(q); let box=document.getElementById('resultado-da-busca'); if(snap.empty){ box.innerHTML="❌ Concurso não encontrado"; box.style.display='block'; return; } snap.forEach(d=>{ let c=d.data(); box.innerHTML=`<h3>Sorteio ${c.numero}</h3><p>${c.data}</p><div class="dezenas-flex">${c.resultado.map(n=>`<div class="dezena-mini">${String(n).padStart(2,'0')}</div>`).join('')}</div><div>Moldura ${c.metricas.borda} · Miolo ${c.metricas.miolo}</div>`; box.style.display='block'; }); };
+    
+    window.conferirApostasLotofacil=()=>{ 
+        let ofi=extrairDezenas(document.getElementById('resultado-oficial').value), txtUser=document.getElementById('jogos-usuario').value, container=document.getElementById('container-conferência'); if(ofi.length!==15) return alert("Insira 15 números."); 
+        container.innerHTML='<h3>Detalhamento de Resultados</h3>'; totalJogosConferidos=0; custoTotalMúltiploCalculado = 0; acertosGlobais={11:0,12:0,13:0,14:0,15:0}; 
+        txtUser.split('\n').forEach(linha=>{ 
+            let jogo=extrairDezenas(linha); 
+            if(jogo.length >= 15 && jogo.length <= 18){ 
+                totalJogosConferidos++; let tam = jogo.length; custoTotalMúltiploCalculado += FATOR_APOSTAS_POR_TAMANHO[tam] * configFinanceira.precoAposta;
+                let acR = jogo.filter(n=>ofi.includes(n)).length; let desc = "";
+                if (acR >= 11 && TABELA_DESDOBRAMENTO_PREMIOS[tam] && TABELA_DESDOBRAMENTO_PREMIOS[tam][acR]) {
+                    let t = TABELA_DESDOBRAMENTO_PREMIOS[tam][acR]; acertosGlobais[11] += t[11]||0; acertosGlobais[12] += t[12]||0; acertosGlobais[13] += t[13]||0; acertosGlobais[14] += t[14]||0; acertosGlobais[15] += t[15]||0;
+                    desc = ` ➔ Múltiplos: ${t[15]?`15pt(${t[15]}) `:''}${t[14]?`14pt(${t[14]}) `:''}${t[13]?`13pt(${t[13]}) `:''}${t[12]?`12pt(${t[12]}) `:''}${t[11]?`11pt(${t[11]}) `:''}`;
+                }
+                container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${jogo.map(n=>`<div class="dezena-mini" style="background:${ofi.includes(n)?'var(--success)':'#cbd5e1'}">${String(n).padStart(2,'0')}</div>`).join('')}</div><div><span style="font-size:0.8rem; font-weight:bold;">Bilhete ${tam}D: ${acR} Acertos</span><small style="color:var(--gray);">${desc}</small></div></div>`;
+            } 
+        }); 
+        if(totalJogosConferidos){ document.getElementById('resumo-premios-card').style.display='grid'; Object.keys(acertosGlobais).forEach(p=>document.getElementById(`count-${p}`).innerText=acertosGlobais[p]); calcularPainelFinanceiro(); } 
+    };
+
+    function calcularPainelFinanceiro(){ 
+        let c = custoTotalMúltiploCalculado, r=(acertosGlobais[11]*configFinanceira.p11)+(acertosGlobais[12]*configFinanceira.p12)+(acertosGlobais[13]*configFinanceira.p13)+(acertosGlobais[14]*configFinanceira.p14)+(acertosGlobais[15]*configFinanceira.p15), s=r-c; 
+        document.getElementById('fin-val-custo').innerText=c.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); document.getElementById('fin-val-retorno').innerText=r.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); document.getElementById('fin-val-balanco').innerText=s.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}); document.getElementById('fin-box-balanco').className="fin-card fin-balanco "+(s>0?"lucro":"prejuizo"); 
+    }
+
+    window.salvarConfiguracoesFinanceiras=()=>{ configFinanceira={ precoAposta:parseFloat(document.getElementById('cfg-preco-aposta').value), p11:parseFloat(document.getElementById('cfg-premio-11').value), p12:parseFloat(document.getElementById('cfg-premio-12').value), p13:parseFloat(document.getElementById('cfg-premio-13').value), p14:parseFloat(document.getElementById('cfg-premio-14').value), p15:parseFloat(document.getElementById('cfg-premio-15').value) }; localStorage.setItem('loterial_cfg',JSON.stringify(configFinanceira)); alert("Salvo!"); };
+    document.getElementById('btn-salvar-fire').onclick=salvarNoFirebase; 
+    document.getElementById('btn-buscar-concurso').onclick=async()=>{ let num=parseInt(document.getElementById('busca-id-concurso').value); if(!num) return; const q=query(collection(db,"concursos"),where("numero","==",num)); const snap=await getDocs(q); let box=document.getElementById('resultado-da-busca'); if(snap.empty){ box.innerHTML="❌ Não encontrado"; box.style.display='block'; return; } snap.forEach(d=>{ let c=d.data(); box.innerHTML=`<h3>Sorteio ${c.numero}</h3><p>${c.data}</p><div class="dezenas-flex">${c.resultado.map(n=>`<div class="dezena-mini">${String(n).padStart(2,'0')}</div>`).join('')}</div>`; box.style.display='block'; }); };
 </script>
 </body>
 </html>
