@@ -546,6 +546,17 @@
             line-height: 1.4;
         }
 
+        .btn-group-jogos {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .btn-group-jogos .btn {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(30px);}
             to { opacity: 1; transform: translateY(0);}
@@ -557,6 +568,7 @@
             .tab-btn { padding: 8px 12px; font-size: 0.7rem; min-width: 70px; }
             .dezena-mini { width: 32px; height: 32px; font-size: 0.7rem; }
             .bola-sel { font-size: 0.9rem; }
+            .btn-group-jogos { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -678,7 +690,15 @@
                 <div class="form-group"><label>Quantidade de Jogos</label><input type="number" id="qtd-jogos" value="15" min="1" max="150"></div>
                 <button class="btn" onclick="window.executarMotorGerador()">⚙️ Gerar Apostas</button>
             </div>
-            <div class="card"><h2>📋 Jogos Gerados</h2><div id="jogos-sugeridos-container"><p style="color:gray;">Configure e gere os jogos</p></div><div id="area-botao-integracao"></div></div>
+            <div class="card">
+                <h2>📋 Jogos Gerados</h2>
+                <div id="jogos-sugeridos-container"><p style="color:gray;">Configure e gere os jogos</p></div>
+                <div id="area-botao-integracao"></div>
+                <div class="btn-group-jogos" id="btn-group-impressao" style="display: none;">
+                    <button class="btn" style="background: #2c3e66;" onclick="window.imprimirOuPDF()">🖨️ Imprimir / PDF</button>
+                    <button class="btn" style="background: #0f172a;" onclick="window.compartilharJogos()">📤 Compartilhar</button>
+                </div>
+            </div>
         </div>
     </div>
     <div id="aba-alimentador" class="tab-content"><div class="grid-2"><div class="card"><h2>Alimentar Concurso Real</h2><div class="form-group"><label>Nº Concurso</label><input type="number" id="adm-concurso" placeholder="3112"></div><div class="form-group"><label>Data</label><input type="date" id="adm-data"></div><div class="form-group"><label>Dezenas (15 números)</label><input type="text" id="adm-dezenas" placeholder="01 02 03 ... 15"></div><button class="btn" id="btn-salvar-fire" style="background:var(--success);">💾 Salvar na Nuvem</button></div><div class="card"><h2>Últimos Sorteios</h2><div id="lista-concursos-salvos">Sincronizando Firebase...</div></div></div></div>
@@ -715,7 +735,6 @@
         18: { 15: {15:1, 14:45, 13:315, 12:455, 11:0}, 14: {15:0, 14:4, 13:84, 12:364, 11:364}, 13: {15:0, 14:0, 13:10, 12:120, 11:390}, 12: {15:0, 14:0, 13:0, 12:20, 11:240}, 11: {15:0, 14:0, 13:0, 12:0, 11:35} }
     };
 
-    // REGRA DO MONITOR DE LOGIN COM INTELIGÊNCIA TRIAL DE 3 DIAS AUTOMÁTICA
     onAuthStateChanged(auth, async (user) => {
         if(user) {
             try {
@@ -758,7 +777,7 @@
                         }
                     }
                     
-                    alert("⚠️ Seu período de teste de 3 dias expirou!\n\nPara continuar utilizando o Loterial Pro, efetue o pagamento da sua licença e envie o comprovante ao administrador.");
+                    alert("⚠️ Seu período de teste expirou!\n\nPara continuar utilizando o Loterial Pro, efetue o pagamento da sua licença e envie o comprovante ao administrador.");
                     await signOut(auth);
                 } else {
                     await signOut(auth);
@@ -861,9 +880,9 @@
         let f=definicaoDezenas.filter(x=>x===1).length, e=definicaoDezenas.filter(x=>x===3).length;
         if(est==='matriz') ctr.innerHTML=`<div>🔮 Fixas: ${f}/5</div><div>🌿 Semi: ${definicaoDezenas.filter(x=>x===2).length}/12</div>`; 
         else if(est==='erre4') ctr.innerHTML=`<div>❌ Excluir: ${e}/4</div>`; else if(est==='exclusao') ctr.innerHTML=`<div>❌ Excluir: ${e}/5</div>`; else if(est==='erre6') ctr.innerHTML=`<div>❌ Excluir: ${e}/6</div>`;
-        else if(['oito_fixas','nove_fixas'].includes(est)) ctr.innerHTML=`<div>🔮 Fixas Marcardas: ${f}/${est==='oito_fixas'?8:9}</div>`;
+        else if(['oito_fixas','nove_fixas'].includes(est)) ctr.innerHTML=`<div>🔮 Fixas Marcadas: ${f}/${est==='oito_fixas'?8:9}</div>`;
         else if(['cinco_grupos','cinco_de_cinco'].includes(est)) {
-            ctr.innerHTML=`${est==='cinco_grupos'?`<div>🔮 Fx: ${f}/5</div>`:''}<div>G1: ${definicaoDezenas.filter(x=>x===11).length}</div><div>G2: ${definicaoDezenas.filter(x=>x===12).length}</div><div>G3: ${definicaoDezenas.filter(x=>x===13).length}</div><div>G4: ${definicaoDezenas.filter(x=>x===14).length}</div><div>G5: ${definicaoDezenas.filter(x=>x===15).length}</div>`;
+            ctr.innerHTML=`${est==='cinco_grupos'?`<div>🔮 Fixas: ${f}/5</div>`:''}<div>G1: ${definicaoDezenas.filter(x=>x===11).length}</div><div>G2: ${definicaoDezenas.filter(x=>x===12).length}</div><div>G3: ${definicaoDezenas.filter(x=>x===13).length}</div><div>G4: ${definicaoDezenas.filter(x=>x===14).length}</div><div>G5: ${definicaoDezenas.filter(x=>x===15).length}</div>`;
         } else ctr.innerHTML=`<div>Tabuleiro Ativo</div>`;
     };
     
@@ -914,11 +933,70 @@
             if(jogo.length === tamB) lista.push(jogo), jogosGeradosTextoPuro+=jogo.map(n=>String(n).padStart(2,'0')).join(' ')+"\n";
         }
         lista.forEach(j=>{ container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${j.map(n=>`<div class="dezena-mini" style="background:var(--primary)">${String(n).padStart(2,'0')}</div>`).join('')}</div><div class="metadados-jogo"><span><b>${j.length} Dezenas</b></span> · <span>${est.toUpperCase()}</span></div></div>`; });
-        if(jogosGeradosTextoPuro) areaBotao.innerHTML=`<button class="btn" style="background:var(--success);" onclick="window.enviarParaOConferidor()">🚀 Enviar ao Conferidor</button>`;
+        if(jogosGeradosTextoPuro) {
+            areaBotao.innerHTML=`<button class="btn" style="background:var(--success);" onclick="window.enviarParaOConferidor()">🚀 Enviar ao Conferidor</button>`;
+            document.getElementById('btn-group-impressao').style.display = 'flex';
+        } else {
+            document.getElementById('btn-group-impressao').style.display = 'none';
+        }
     };
 
     window.enviarParaOConferidor=()=>{ if(jogosGeradosTextoPuro) document.getElementById('jogos-usuario').value=jogosGeradosTextoPuro.trim(), mudarAba('aba-conferidor'), window.conferirApostasLotofacil(); };
     
+    window.imprimirOuPDF = () => {
+        const container = document.getElementById('jogos-sugeridos-container');
+        const jogosHTML = container.cloneNode(true);
+        
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(`
+            <html>
+            <head>
+                <title>Jogos Loterial Pro</title>
+                <style>
+                    body { font-family: 'Inter', sans-serif; padding: 20px; }
+                    .jogo-gerado { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+                    .dezenas-flex { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+                    .dezena-mini { background: #8b5cf6; color: white; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 40px; font-weight: bold; }
+                    h2 { color: #0f172a; }
+                    .metadados-jogo { font-size: 0.8rem; color: #475569; margin-top: 6px; }
+                </style>
+            </head>
+            <body>
+                <h2>📋 Jogos Gerados - Loterial Pro</h2>
+                ${jogosHTML.innerHTML}
+                <p style="margin-top: 30px; font-size: 12px; color: gray;">Gerado por Loterial Pro Cloud</p>
+            </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.print();
+    };
+
+    window.compartilharJogos = () => {
+        const jogosTexto = [];
+        const jogosDivs = document.querySelectorAll('#jogos-sugeridos-container .jogo-gerado');
+        jogosDivs.forEach(div => {
+            const dezenas = Array.from(div.querySelectorAll('.dezena-mini')).map(d => d.innerText.trim());
+            if (dezenas.length) jogosTexto.push(dezenas.join(' '));
+        });
+        
+        if (jogosTexto.length === 0) {
+            alert('Nenhum jogo gerado para compartilhar.');
+            return;
+        }
+        
+        const conteudo = `🎲 *Jogos Loterial Pro* 🎲\n\n${jogosTexto.join('\n')}`;
+        if (navigator.share) {
+            navigator.share({ title: 'Jogos Loterial Pro', text: conteudo }).catch(() => {
+                navigator.clipboard.writeText(conteudo);
+                alert('✅ Jogos copiados para a área de transferência!');
+            });
+        } else {
+            navigator.clipboard.writeText(conteudo);
+            alert('📋 Jogos copiados para a área de transferência! Compartilhe onde quiser.');
+        }
+    };
+
     window.conferirApostasLotofacil=()=>{ 
         let ofi=extrairDezenas(document.getElementById('resultado-oficial').value), txtUser=document.getElementById('jogos-usuario').value, container=document.getElementById('container-conferência'); if(ofi.length!==15) return alert("Insira 15 números."); 
         container.innerHTML='<h3>Detalhamento de Resultados</h3>'; totalJogosConferidos=0; custoTotalMúltiploCalculado = 0; acertosGlobais={11:0,12:0,13:0,14:0,15:0}; 
@@ -945,6 +1023,8 @@
     window.salvarConfiguracoesFinanceiras=()=>{ configFinanceira={ precoAposta:parseFloat(document.getElementById('cfg-preco-aposta').value), p11:parseFloat(document.getElementById('cfg-premio-11').value), p12:parseFloat(document.getElementById('cfg-premio-12').value), p13:parseFloat(document.getElementById('cfg-premio-13').value), p14:parseFloat(document.getElementById('cfg-premio-14').value), p15:parseFloat(document.getElementById('cfg-premio-15').value) }; localStorage.setItem('loterial_cfg',JSON.stringify(configFinanceira)); alert("Salvo!"); };
     document.getElementById('btn-salvar-fire').onclick=salvarNoFirebase; 
     document.getElementById('btn-buscar-concurso').onclick=async()=>{ let num=parseInt(document.getElementById('busca-id-concurso').value); if(!num) return; const q=query(collection(db,"concursos"),where("numero","==",num)); const snap=await getDocs(q); let box=document.getElementById('resultado-da-busca'); if(snap.empty){ box.innerHTML="❌ Não encontrado"; box.style.display='block'; return; } snap.forEach(d=>{ let c=d.data(); box.innerHTML=`<h3>Sorteio ${c.numero}</h3><p>${c.data}</p><div class="dezenas-flex">${c.resultado.map(n=>`<div class="dezena-mini">${String(n).padStart(2,'0')}</div>`).join('')}</div>`; box.style.display='block'; }); };
+    window.abrirModalAjuda = () => { document.getElementById('modal-ajuda-plataforma').style.display = 'flex'; };
+    window.fecharModalAjuda = () => { document.getElementById('modal-ajuda-plataforma').style.display = 'none'; };
 </script>
 </body>
 </html>
