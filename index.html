@@ -305,6 +305,22 @@
             transform: translateY(-2px);
         }
 
+        .btn-secondary {
+            background: #64748b;
+        }
+        
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+        }
+        
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
         .jogo-gerado {
             background: var(--light);
             padding: 14px;
@@ -324,14 +340,14 @@
         .dezena-mini {
             width: 36px;
             height: 36px;
-            background: var(--dark);
+            background: #1e293b;
             color: white;
             border-radius: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
@@ -521,7 +537,7 @@
             padding: 2rem;
             border-radius: 32px;
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             max-height: 85vh;
             overflow-y: auto;
             box-shadow: var(--shadow-md);
@@ -544,6 +560,13 @@
             font-size: 0.85rem;
             color: #475569;
             line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .ajuda-item ul {
+            margin-left: 20px;
+            color: #475569;
+            font-size: 0.85rem;
         }
 
         .btn-group-jogos {
@@ -553,6 +576,17 @@
         }
 
         .btn-group-jogos .btn {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .btn-group-conferidor {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        
+        .btn-group-conferidor .btn {
             flex: 1;
             margin-bottom: 0;
         }
@@ -568,7 +602,7 @@
             .tab-btn { padding: 8px 12px; font-size: 0.7rem; min-width: 70px; }
             .dezena-mini { width: 32px; height: 32px; font-size: 0.7rem; }
             .bola-sel { font-size: 0.9rem; }
-            .btn-group-jogos { flex-direction: column; gap: 8px; }
+            .btn-group-jogos, .btn-group-conferidor { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -576,16 +610,95 @@
 
 <div id="modal-ajuda-plataforma">
     <div class="ajuda-box">
-        <h2 style="margin-bottom: 10px;">📖 Guia de Uso da Plataforma</h2>
-        <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 20px;">Aprenda como tirar o máximo de proveito de cada ferramenta integrada do Loterial Pro.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--primary-soft); padding-bottom: 10px;">
+            <h2 style="margin: 0;">📖 Guia Completo do Loterial Pro</h2>
+            <button onclick="window.fecharModalAjuda()" style="background: none; border: none; font-size: 28px; cursor: pointer; color: var(--gray);">&times;</button>
+        </div>
         
         <div class="ajuda-item">
-            <h4>🎲 Novas Estratégias Expandidas (Garantias de 11 a 13 Pontos)</h4>
-            <p>• <b>5 Grupos de 5 (Sem Fixas):</b> Divide as 25 dezenas em 5 blocos coloridos de 5 dezenas. Garante ótimos retornos baseados na regularidade.</p>
-            <p>• <b>Matrizes de Redução (8 ou 9 Fixas):</b> Excelentes opções econômicas para cravar 12 e 13 acertos reais no fechamento.</p>
+            <h4>🚀 1. Como Funciona a Plataforma?</h4>
+            <p>O <strong>Loterial Pro</strong> é um sistema completo em nuvem para análise e geração de jogos da Lotofácil. Ele oferece desde a criação de contas com licenças (trial de 7 dias) até a geração de jogos usando estratégias matemáticas avançadas. Tudo é salvo no <strong>Firebase</strong>, permitindo acesso de qualquer dispositivo.</p>
+            <p><strong>Fluxo Básico:</strong> Cadastre-se (ganhe 7 dias grátis) ➔ Acesse o sistema ➔ Alimente os concursos reais na aba "📝 Concursos" ➔ Utilize as estratégias na aba "🎲 Gerador" ➔ Confira seus bilhetes na aba "✅ Conferir".</p>
         </div>
 
-        <button class="btn" style="margin-top: 10px; margin-bottom: 0;" onclick="window.fecharModalAjuda()">Fechar Guia</button>
+        <div class="ajuda-item">
+            <h4>🗂️ 2. O que cada Aba faz?</h4>
+            <p><strong>🎲 Gerador:</strong> Coração do sistema. Selecione uma estratégia, configure o volante interativo e gere seus jogos.</p>
+            <p><strong>📝 Concursos:</strong> Alimente o sistema com os sorteios oficiais da Lotofácil. Esses dados alimentam as estatísticas e o mapa de calor.</p>
+            <p><strong>🔍 Histórico:</strong> Busque qualquer concurso já cadastrado para ver o resultado oficial.</p>
+            <p><strong>📊 Calor Real:</strong> Visualize as dezenas "Quentes" (mais frequentes) e "FriAs" (atrasadas) com base nos concursos cadastrados.</p>
+            <p><strong>✅ Conferir:</strong> Cole seus jogos (gerados ou manuais) e o resultado oficial. O sistema calcula automaticamente os pontos e os prêmios múltiplos (para 16, 17 ou 18 números).</p>
+            <p><strong>💰 Financeiro:</strong> Mostra o custo total, o retorno estimado e o lucro/prejuízo baseado nos prêmios que você configurar.</p>
+            <p><strong>⚙️ Valores:</strong> Configure o preço da aposta (R$ 3,00 padrão) e os prêmios para 11 a 15 pontos.</p>
+            <p><strong>🔑 Licenças Admin:</strong> (Apenas para administradores) Libera ou bloqueia o acesso de clientes cadastrados.</p>
+        </div>
+
+        <div class="ajuda-item">
+            <h4>🧠 3. Explicação Detalhada das Estratégias</h4>
+            <p><strong>🎯 Matriz Personalizada (5 Fixas + 12 Semi):</strong> Você define 5 dezenas como "FIXAS" (obrigatórias), 12 como "SEMI-FIXAS" (prioritárias) e o restante como livres. Ideal para quem tem dezenas de confiança.</p>
+            <p><strong>🖼️ Filtro Geométrico (Moldura/Miolo):</strong> Divide o volante em "Borda" (números das pontas) e "Miolo" (centro). O sistema garante uma proporção (ex: 9 borda / 6 miolo), baseado em estatísticas de sorteios reais.</p>
+            <p><strong>❌ Fechamentos por Exclusão (R4, R5, R6):</strong> Você decide quais dezenas <strong>NÃO</strong> entrarão no jogo (excluídas). O sistema combina as restantes. Ótimo para quando você tem convicção que certos números não sairão.</p>
+            <p><strong>🔢 5 Grupos de 5 (Sem Fixas):</strong> Estratégia poderosa. Você divide as 25 dezenas em 5 grupos coloridos de 5 números cada. O sistema seleciona <strong>3 dezenas de cada grupo</strong> para formar o jogo de 15. Garante cobertura total.</p>
+            <p><strong>💎 Reduções (8 ou 9 Fixas):</strong> Para apostas econômicas. Você fixa 8 ou 9 dezenas, e o sistema completa com as variáveis restantes. Aumenta as chances de acertar 11 a 13 pontos com baixo custo.</p>
+            <p><strong>🔄 Ciclo Atrasadas:</strong> Marque as dezenas que estão há mais tempo sem sair. O sistema prioriza a "ciclagem" dessas dezenas no jogo.</p>
+        </div>
+
+        <div class="ajuda-item">
+            <h4>🖱️ 4. Como usar o Tabuleiro/Volante?</h4>
+            <p>Ao lado esquerdo do gerador, você verá os números de 1 a 25. Cada estratégia transforma o volante:</p>
+            <ul>
+                <li><span style="color: var(--primary);">● Fixa</span> / <span style="color: var(--success);">● Semi</span> / <span style="color: var(--warning);">● Ciclo</span> → Clique para alternar os status.</li>
+                <li><span style="color: var(--hot);">● Excluir</span> → Clique para marcar as dezenas que serão removidas.</li>
+                <li><span style="color: #3b82f6;">● Grupos (G1 a G5)</span> → No modo "5 Grupos de 5", clique para definir cada grupo.</li>
+            </ul>
+            <p>O contador na parte superior mostra quantas fixas, semi ou exclusões você já escolheu, evitando erros.</p>
+        </div>
+
+        <div class="ajuda-item">
+            <h4>📈 5. Apostas com 16, 17 ou 18 Números</h4>
+            <p>Selecionando o tamanho do bilhete (ao lado da estratégia), o sistema automaticamente considera os fatores de multiplicação:</p>
+            <ul>
+                <li><strong>16 números</strong> = 16 apostas simples (custo = R$ 48,00 se o simples for R$ 3,00).</li>
+                <li><strong>17 números</strong> = 136 apostas simples.</li>
+                <li><strong>18 números</strong> = 816 apostas simples.</li>
+            </ul>
+            <p><strong>Importante:</strong> No ato da conferência, o sistema aplica a <strong>matriz de desdobramento oficial da Caixa</strong>. Se você acertar 15 números num bilhete de 18, ele premiará corretamente 1x 15 pontos, 45x 14 pontos, 315x 13 pontos, etc.</p>
+        </div>
+
+        <div class="ajuda-item">
+            <h4>💰 6. Conferindo seus Jogos e Calculando Lucro</h4>
+            <p><strong>Passo a Passo:</strong> Cole o resultado oficial (ex: "01 02 03 04 05...") no campo superior. Cole seus jogos no campo inferior (um por linha, formatados com espaços). Clique em "Conferir Pontuação".</p>
+            <p>O resultado mostrará cada bilhete com as dezenas sorteadas em <span style="color: var(--success);">● verde</span>. O painel "Resumo de Prêmios" exibirá quantos bilhetes de 11, 12, 13, 14 e 15 pontos você conseguiu.</p>
+            <p>A aba <strong>Financeiro</strong> automaticamente calcula: Custo Total (baseado no tamanho do bilhete), Retorno Total (com base nos prêmios configurados) e o Saldo Final (Lucro ou Prejuízo).</p>
+        </div>
+
+        <div class="ajuda-item">
+            <h4>🖨️ 7. Gerando PDF, Imprimindo ou Compartilhando</h4>
+            <p>Após gerar seus jogos (aba Gerador), dois novos botões aparecem abaixo da lista:</p>
+            <ul>
+                <li><strong>🖨️ Imprimir / PDF:</strong> Abre uma nova janela com seus jogos formatados. Você pode usar o atalho <strong>Ctrl + P</strong> para salvar como PDF ou imprimir diretamente.</li>
+                <li><strong>📤 Compartilhar:</strong> Copia todos os jogos gerados para a área de transferência. Você pode colar em grupos de WhatsApp, e-mail ou anotações.</li>
+            </ul>
+            <p>Além disso, dentro da aba "✅ Conferir", você pode usar os botões "Limpar Resultado", "Limpar Apostas" ou "Limpar Tudo" para gerenciar a conferência.</p>
+        </div>
+
+        <div class="ajuda-item">
+            <h4>🔐 8. Para Administradores (Gestão de Clientes)</h4>
+            <p>Se o seu e-mail for cadastrado como admin, a aba "Licenças Admin" aparecerá. Nela, você visualiza todos os usuários cadastrados e pode:</p>
+            <ul>
+                <li><strong>✓ Ativar:</strong> Libera o acesso total ao sistema para o cliente.</li>
+                <li><strong>✕ Bloquear:</strong> Revoga o acesso imediatamente (útil após fim do trial ou inadimplência).</li>
+            </ul>
+            <p>O sistema também gerencia automaticamente os 7 dias de trial gratuito para novas contas.</p>
+        </div>
+        
+        <div class="ajuda-item">
+            <h4>🎯 Dica de Ouro para Iniciantes</h4>
+            <p>Comece alimentando os <strong>últimos 5 a 10 concursos</strong> na aba "📝 Concursos". Depois, vá na aba "📊 Calor Real" para identificar as dezenas quentes e frias. Utilize a estratégia "Matriz Personalizada" marcando 5 fixas quentes e 12 semi-fixas equilibradas. Gere 10 a 15 jogos e confira com o resultado oficial de um concurso antigo para testar a eficácia.</p>
+            <p style="margin-top: 10px;">Sempre valide os valores de premiação na aba "⚙️ Valores", pois eles variam de concurso para concurso.</p>
+        </div>
+
+        <button class="btn" style="margin-top: 20px; width: 100%;" onclick="window.fecharModalAjuda()">✅ Entendi, Fechar Guia</button>
     </div>
 </div>
 
@@ -636,11 +749,7 @@
             <div class="tabela-admin-wrapper">
                 <table class="tabela-admin">
                     <thead>
-                        <tr>
-                            <th>E-mail do Usuário</th>
-                            <th>Status da Licença</th>
-                            <th>Ações Administrativas</th>
-                        </tr>
+                        <tr><th>E-mail do Usuário</th><th>Status da Licença</th><th>Ações Administrativas</th></tr>
                     </thead>
                     <tbody id="tabela-clientes-firebase">
                         <tr><td colspan="3" style="color:gray; text-align:center;">Carregando dados estruturados...</td></tr>
@@ -704,7 +813,38 @@
     <div id="aba-alimentador" class="tab-content"><div class="grid-2"><div class="card"><h2>Alimentar Concurso Real</h2><div class="form-group"><label>Nº Concurso</label><input type="number" id="adm-concurso" placeholder="3112"></div><div class="form-group"><label>Data</label><input type="date" id="adm-data"></div><div class="form-group"><label>Dezenas (15 números)</label><input type="text" id="adm-dezenas" placeholder="01 02 03 ... 15"></div><button class="btn" id="btn-salvar-fire" style="background:var(--success);">💾 Salvar na Nuvem</button></div><div class="card"><h2>Últimos Sorteios</h2><div id="lista-concursos-salvos">Sincronizando Firebase...</div></div></div></div>
     <div id="aba-consulta" class="tab-content"><div class="card"><h2>Buscar Concurso</h2><div style="display:flex; gap:8px; flex-wrap:wrap;"><input type="number" id="busca-id-concurso" placeholder="Número do sorteio"><button class="btn" id="btn-buscar-concurso" style="width:auto;">Buscar</button></div><div id="resultado-da-busca" class="resultado-busca-box" style="margin-top:20px;"></div></div></div>
     <div id="aba-estatisticas" class="tab-content"><div class="grid-2"><div class="card"><h2>📈 Estatísticas Gerais</h2><div id="resumo-metricas-reais"></div></div><div class="card"><h2>🔥 Mapa de Calor</h2><div class="quadro-numeros" id="quadro-estatistico"></div></div></div></div>
-    <div id="aba-conferidor" class="tab-content"><div class="grid-2"><div class="card"><h2>Conferência Avançada (Múltiplas)</h2><div class="form-group"><label>Resultado Oficial (15 dezenas)</label><input type="text" id="resultado-oficial" value="01 02 03 05 07 08 09 11 13 14 17 18 21 22 24"></div><div class="form-group"><label>Apostas (uma por linha - aceita de 15 a 18 números)</label><textarea id="jogos-usuario" rows="6" placeholder="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16"></textarea></div><button class="btn" style="background:var(--success);" onclick="window.conferirApostasLotofacil()">Conferir Pontuação</button></div><div class="card"><h2>Resumo de Prêmios Totais (Desdobrados)</h2><div class="painel-premios" id="resumo-premios-card" style="display:none;"><div class="premio-box"><h4>11 pts</h4><span id="count-11">0</span></div><div class="premio-box"><h4>12 pts</h4><span id="count-12">0</span></div><div class="premio-box"><h4>13 pts</h4><span id="count-13">0</span></div><div class="premio-box"><h4>14 pts</h4><span id="count-14">0</span></div><div class="premio-box"><h4>15 pts</h4><span id="count-15">0</span></div></div><div id="container-conferência"></div></div></div></div>
+    <div id="aba-conferidor" class="tab-content">
+        <div class="grid-2">
+            <div class="card">
+                <h2>Conferência Avançada (Múltiplas)</h2>
+                <div class="form-group">
+                    <label>Resultado Oficial (15 dezenas)</label>
+                    <input type="text" id="resultado-oficial" value="01 02 03 05 07 08 09 11 13 14 17 18 21 22 24">
+                </div>
+                <div class="form-group">
+                    <label>Apostas (uma por linha - aceita de 15 a 18 números)</label>
+                    <textarea id="jogos-usuario" rows="6" placeholder="01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16"></textarea>
+                </div>
+                <div class="btn-group-conferidor">
+                    <button class="btn btn-secondary" style="background:#64748b;" onclick="window.limparCampoResultado()">🗑️ Limpar Resultado</button>
+                    <button class="btn btn-secondary" style="background:#64748b;" onclick="window.limparCampoApostas()">🗑️ Limpar Apostas</button>
+                    <button class="btn btn-danger" style="background:#ef4444;" onclick="window.limparTodosCamposConferidor()">🗑️ Limpar Tudo</button>
+                </div>
+                <button class="btn" style="background:var(--success); margin-top:12px;" onclick="window.conferirApostasLotofacil()">Conferir Pontuação</button>
+            </div>
+            <div class="card">
+                <h2>Resumo de Prêmios Totais (Desdobrados)</h2>
+                <div class="painel-premios" id="resumo-premios-card" style="display:none;">
+                    <div class="premio-box"><h4>11 pts</h4><span id="count-11">0</span></div>
+                    <div class="premio-box"><h4>12 pts</h4><span id="count-12">0</span></div>
+                    <div class="premio-box"><h4>13 pts</h4><span id="count-13">0</span></div>
+                    <div class="premio-box"><h4>14 pts</h4><span id="count-14">0</span></div>
+                    <div class="premio-box"><h4>15 pts</h4><span id="count-15">0</span></div>
+                </div>
+                <div id="container-conferência"></div>
+            </div>
+        </div>
+    </div>
     <div id="aba-financeiro" class="tab-content"><div class="card"><h2>Balanço de Apostas Múltiplas</h2><div class="financeiro-grid"><div class="fin-card fin-custo"><p>Custo Total</p><span id="fin-val-custo">R$ 0,00</span></div><div class="fin-card fin-retorno"><p>Prêmios</p><span id="fin-val-retorno">R$ 0,00</span></div><div class="fin-card fin-balanco" id="fin-box-balanco"><p>Saldo</p><span id="fin-val-balanco">R$ 0,00</span></div></div></div></div>
     <div id="aba-config" class="tab-content"><div class="card"><h2>Preços & Premiações Base (15 Dezenas)</h2><div class="form-group"><label>Preço Unitário Simples (R$)</label><input type="number" id="cfg-preco-aposta" step="0.50" value="3.00"></div><div class="form-group"><label>Prêmio 11 acertos</label><input type="number" id="cfg-premio-11" value="7.00"></div><div class="form-group"><label>Prêmio 12 acertos</label><input type="number" id="cfg-premio-12" value="12.00"></div><div class="form-group"><label>Prêmio 13 acertos</label><input type="number" id="cfg-premio-13" value="30.00"></div><div class="form-group"><label>Prêmio 14 acertos</label><input type="number" id="cfg-premio-14" value="1500.00"></div><div class="form-group"><label>Prêmio 15 acertos</label><input type="number" id="cfg-premio-15" value="1700000.00"></div><button class="btn" onclick="window.salvarConfiguracoesFinanceiras()">Salvar</button></div></div>
 </div>
@@ -932,7 +1072,7 @@
             }
             if(jogo.length === tamB) lista.push(jogo), jogosGeradosTextoPuro+=jogo.map(n=>String(n).padStart(2,'0')).join(' ')+"\n";
         }
-        lista.forEach(j=>{ container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${j.map(n=>`<div class="dezena-mini" style="background:var(--primary)">${String(n).padStart(2,'0')}</div>`).join('')}</div><div class="metadados-jogo"><span><b>${j.length} Dezenas</b></span> · <span>${est.toUpperCase()}</span></div></div>`; });
+        lista.forEach(j=>{ container.innerHTML+=`<div class="jogo-gerado"><div class="dezenas-flex">${j.map(n=>`<div class="dezena-mini" style="background:#1e293b; color:white;">${String(n).padStart(2,'0')}</div>`).join('')}</div><div class="metadados-jogo"><span><b>${j.length} Dezenas</b></span> · <span>${est.toUpperCase()}</span></div></div>`; });
         if(jogosGeradosTextoPuro) {
             areaBotao.innerHTML=`<button class="btn" style="background:var(--success);" onclick="window.enviarParaOConferidor()">🚀 Enviar ao Conferidor</button>`;
             document.getElementById('btn-group-impressao').style.display = 'flex';
@@ -956,7 +1096,7 @@
                     body { font-family: 'Inter', sans-serif; padding: 20px; }
                     .jogo-gerado { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
                     .dezenas-flex { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-                    .dezena-mini { background: #8b5cf6; color: white; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 40px; font-weight: bold; }
+                    .dezena-mini { background: #1e293b; color: white; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 40px; font-weight: bold; }
                     h2 { color: #0f172a; }
                     .metadados-jogo { font-size: 0.8rem; color: #475569; margin-top: 6px; }
                 </style>
@@ -997,6 +1137,27 @@
         }
     };
 
+    window.limparCampoResultado = () => {
+        document.getElementById('resultado-oficial').value = '';
+    };
+
+    window.limparCampoApostas = () => {
+        document.getElementById('jogos-usuario').value = '';
+    };
+
+    window.limparTodosCamposConferidor = () => {
+        document.getElementById('resultado-oficial').value = '';
+        document.getElementById('jogos-usuario').value = '';
+        document.getElementById('container-conferência').innerHTML = '';
+        document.getElementById('resumo-premios-card').style.display = 'none';
+        acertosGlobais = {11:0,12:0,13:0,14:0,15:0};
+        custoTotalMúltiploCalculado = 0;
+        document.getElementById('fin-val-custo').innerText = 'R$ 0,00';
+        document.getElementById('fin-val-retorno').innerText = 'R$ 0,00';
+        document.getElementById('fin-val-balanco').innerText = 'R$ 0,00';
+        document.getElementById('fin-box-balanco').className = 'fin-card fin-balanco';
+    };
+
     window.conferirApostasLotofacil=()=>{ 
         let ofi=extrairDezenas(document.getElementById('resultado-oficial').value), txtUser=document.getElementById('jogos-usuario').value, container=document.getElementById('container-conferência'); if(ofi.length!==15) return alert("Insira 15 números."); 
         container.innerHTML='<h3>Detalhamento de Resultados</h3>'; totalJogosConferidos=0; custoTotalMúltiploCalculado = 0; acertosGlobais={11:0,12:0,13:0,14:0,15:0}; 
@@ -1023,8 +1184,14 @@
     window.salvarConfiguracoesFinanceiras=()=>{ configFinanceira={ precoAposta:parseFloat(document.getElementById('cfg-preco-aposta').value), p11:parseFloat(document.getElementById('cfg-premio-11').value), p12:parseFloat(document.getElementById('cfg-premio-12').value), p13:parseFloat(document.getElementById('cfg-premio-13').value), p14:parseFloat(document.getElementById('cfg-premio-14').value), p15:parseFloat(document.getElementById('cfg-premio-15').value) }; localStorage.setItem('loterial_cfg',JSON.stringify(configFinanceira)); alert("Salvo!"); };
     document.getElementById('btn-salvar-fire').onclick=salvarNoFirebase; 
     document.getElementById('btn-buscar-concurso').onclick=async()=>{ let num=parseInt(document.getElementById('busca-id-concurso').value); if(!num) return; const q=query(collection(db,"concursos"),where("numero","==",num)); const snap=await getDocs(q); let box=document.getElementById('resultado-da-busca'); if(snap.empty){ box.innerHTML="❌ Não encontrado"; box.style.display='block'; return; } snap.forEach(d=>{ let c=d.data(); box.innerHTML=`<h3>Sorteio ${c.numero}</h3><p>${c.data}</p><div class="dezenas-flex">${c.resultado.map(n=>`<div class="dezena-mini">${String(n).padStart(2,'0')}</div>`).join('')}</div>`; box.style.display='block'; }); };
-    window.abrirModalAjuda = () => { document.getElementById('modal-ajuda-plataforma').style.display = 'flex'; };
-    window.fecharModalAjuda = () => { document.getElementById('modal-ajuda-plataforma').style.display = 'none'; };
+    
+    window.abrirModalAjuda = () => { 
+        document.getElementById('modal-ajuda-plataforma').style.display = 'flex'; 
+    };
+    
+    window.fecharModalAjuda = () => { 
+        document.getElementById('modal-ajuda-plataforma').style.display = 'none'; 
+    };
 </script>
 </body>
 </html>
